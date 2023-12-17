@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLocalStorage } from "@uidotdev/usehooks";
+import { Analytics } from "@vercel/analytics/react";
 import Nav from "./Nav";
 import Heading from "./Heading";
 import Quote from "./Quote";
@@ -120,6 +121,7 @@ export default function App() {
           setIsStatsModalVisible(false);
         }}
       />
+      <Analytics />
     </div>
   );
 }
