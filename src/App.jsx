@@ -33,6 +33,7 @@ Identify who said the 5 simpsons quotes
   - can i get the simpsons ttf/otf font working instead of using images?
   - show how they did this time vs their overall (localstorage, how many played, % of time got 100%, % of correct overall)
   - could show most guessed incorrect answer
+  - anything i can do about that big gap underneath the quote?  maybe centre the quote...
 */
 
 export default function App() {
