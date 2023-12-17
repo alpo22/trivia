@@ -1,5 +1,5 @@
 const characters = [
-  "Abraham Simpson",
+  "Abraham (Grampa) Simpson",
   "Agnes Skinner",
   "Akira Kurosawa",
   "Alice Glick",

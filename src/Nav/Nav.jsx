@@ -11,6 +11,16 @@ import "./Nav.scss";
 export default function Nav() {
   const [, setIsInstructionsModalVisible] = useLocalStorage("isInstructionsModalVisible");
 
+  async function copyMessageToClipboard() {
+    let text = `Try Simpsons Quotes game at https://trivia-five-nu.vercel.app/`;
+
+    try {
+      await navigator.clipboard.writeText(text);
+    } catch (err) {
+      console.error("Failed to copy: ", err);
+    }
+  }
+
   return (
     <nav>
       <ul>
@@ -21,10 +31,19 @@ export default function Nav() {
         >
           <HelpSvg />
         </li>
-        <li>
+        <li
+          onClick={() => {
+            alert("Have you ever heard of feature creep?");
+          }}
+        >
           <StatsSvg />
         </li>
-        <li>
+        <li
+          onClick={async () => {
+            await copyMessageToClipboard();
+            alert("Link copied to your clipboard.");
+          }}
+        >
           <ShareSvg />
         </li>
       </ul>

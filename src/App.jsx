@@ -1,14 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useLocalStorage } from "@uidotdev/usehooks";
 import Nav from "./Nav";
 import Heading from "./Heading";
 import Quote from "./Quote";
 import Rounds from "./Rounds";
 import Input from "./Input";
 import InstructionsModal from "./InstructionsModal";
-import { useLocalStorage } from "@uidotdev/usehooks";
+import ResultsModal from "./ResultsModal";
+import StatsModal from "./StatsModal";
 import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 /*
+Font:
+
 Identify who said the 5 simpsons quotes
 	https://simpsons.fandom.com/wiki/Homer_Simpson#Quotes
 	http://www.notable-quotes.com/s/simpsons_quotes_v.html
@@ -17,20 +22,16 @@ Identify who said the 5 simpsons quotes
   https://www.dafont.com/simpsonfont.font?text=Trivia&psize=l
   https://www.thewordfinder.com/simpsons-font-generator/
 
-  TODO:
-  - at game-end
-      show final score (5: woo-hoo, 4: excellent, 3: 'doh', 2: ha-ha nelson, 1: worst score ever), or ralph
-      later 'share' link
-      later overall stats? (localstorage, how many played, % of time got 100%, % of correct overall)
-  - make 'help' button work
-  - make 'stats' button work
   - make 'share' button work (copy to clipboard, show toast)
   - fetch today's quotes and who said them
   - can go back to previous step (to see why wrong)
 
-  Later:
-  - preset isInstructionsModalVisible from localStorage
+  - stats modal content
   - slide next question in from right
+  - could use better images with results, and add more text
+  - when click 'share' on last screen, copy should change to 'copied'
+  - can i get the simpsons ttf/otf font working instead of using images?
+  - show how they did this time vs their overall (localstorage, how many played, % of time got 100%, % of correct overall)
   - could show most guessed incorrect answer
 */
 
@@ -39,7 +40,9 @@ export default function App() {
     "isInstructionsModalVisible",
     true
   );
-  const [currentRound, setCurrentRound] = useState(0);
+  const [isResultsModalVisible, setIsResultsModalVisible] = useState(false);
+  const [isStatsModalVisible, setIsStatsModalVisible] = useState(false);
+  const [currentRound, setCurrentRound] = useState(1);
   const [gameData, setGameData] = useState([
     {
       quote: "He card, read good.",
@@ -53,13 +56,13 @@ export default function App() {
     },
     {
       quote: "Ah. The searing kiss of hot lead; how I missed you. I mean, I think I'm dying.",
-      character: "Apu",
+      character: "Apu Nahasapeemapetilon",
       guess: null,
     },
     {
       quote:
         "I thought I'd never hear the screams of pain or see the look of terror in a young man's eyes. Thank heaven for children!",
-      character: "Abe (Grampa) Simpson",
+      character: "Abraham (Grampa) Simpson",
       guess: null,
     },
     {
@@ -70,20 +73,32 @@ export default function App() {
     },
   ]);
 
+  // TODO: why is this necessary?  After make final choice, it wasn't re-rendering (and showing results)
+  useEffect(() => {
+    if (gameData.filter((round) => round.guess).length === gameData.length) {
+      setIsResultsModalVisible(true);
+    }
+  }, [gameData]);
+
   function handleSubmit(selectedCharacter) {
     setGameData((oldState) => {
-      oldState[currentRound].guess = selectedCharacter;
-      return oldState;
+      const newState = [...oldState];
+      newState[currentRound - 1].guess = selectedCharacter;
+      return newState;
     });
 
-    setCurrentRound((oldState) => {
-      return oldState + 1;
-    });
+    if (currentRound < 5) {
+      setCurrentRound((oldState) => {
+        return oldState + 1;
+      });
+    }
   }
 
   function handleCloseInstructionsModal() {
     setIsInstructionsModalVisible(false);
   }
+
+  const score = gameData.filter((round) => round.guess === round.character).length;
 
   return (
     <div className="app-wrapper">
@@ -91,12 +106,19 @@ export default function App() {
       <Nav />
       <Heading />
       <div className="quote">
-        <Quote text={gameData[currentRound].quote} />
+        <Quote text={gameData[currentRound - 1].quote} />
       </div>
       <footer>
         <Rounds currentRound={currentRound} gameData={gameData} />
         <Input onSubmit={handleSubmit} />
       </footer>
+      <ResultsModal score={score} isVisible={isResultsModalVisible} onClose={() => {}} />
+      <StatsModal
+        isVisible={isStatsModalVisible}
+        onClose={() => {
+          setIsStatsModalVisible(false);
+        }}
+      />
     </div>
   );
 }

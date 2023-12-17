@@ -1,0 +1,20 @@
+.results-modal-body {
+  text-align: center;
+
+  .character-photo-wrapper {
+    height: 320px;
+    overflow: hidden;
+  }
+
+  button {
+    background-color: #fecb00;
+    background-image: url("https://i.ibb.co/zFFpvhf/share.png");
+    background-size: 90px;
+    border: 2px solid black;
+    border-radius: 5px;
+    color: transparent;
+    cursor: pointer;
+    width: 93px;
+    height: 40px;
+  }
+}
