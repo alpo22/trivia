@@ -4,6 +4,8 @@ import Heading from "./Heading";
 import Quote from "./Quote";
 import Rounds from "./Rounds";
 import Input from "./Input";
+import InstructionsModal from "./InstructionsModal";
+import { useLocalStorage } from "@uidotdev/usehooks";
 import "./App.css";
 
 /*
@@ -17,20 +19,26 @@ Identify who said the 5 simpsons quotes
 
   TODO:
   - at game-end
-      show final score (with a 'woo-hoo' if got perfect', or a 'doh if got...?)
+      show final score (5: woo-hoo, 4: excellent, 3: 'doh', 2: ha-ha nelson, 1: worst score ever), or ralph
       later 'share' link
       later overall stats? (localstorage, how many played, % of time got 100%, % of correct overall)
-  - show instructions if not in localStorage (a simple modal (for instructions), box with rounded corners, x in a bubble in top right)
   - make 'help' button work
   - make 'stats' button work
   - make 'share' button work (copy to clipboard, show toast)
   - fetch today's quotes and who said them
+  - can go back to previous step (to see why wrong)
 
   Later:
+  - preset isInstructionsModalVisible from localStorage
+  - slide next question in from right
   - could show most guessed incorrect answer
 */
 
 export default function App() {
+  const [isInstructionsModalVisible, setIsInstructionsModalVisible] = useLocalStorage(
+    "isInstructionsModalVisible",
+    true
+  );
   const [currentRound, setCurrentRound] = useState(0);
   const [gameData, setGameData] = useState([
     {
@@ -73,11 +81,16 @@ export default function App() {
     });
   }
 
+  function handleCloseInstructionsModal() {
+    setIsInstructionsModalVisible(false);
+  }
+
   return (
     <div className="app-wrapper">
+      <InstructionsModal isVisible={isInstructionsModalVisible} onClose={handleCloseInstructionsModal} />
       <Nav />
       <Heading />
-      <div class="quote">
+      <div className="quote">
         <Quote text={gameData[currentRound].quote} />
       </div>
       <footer>

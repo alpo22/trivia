@@ -1,3 +1,4 @@
+import { useLocalStorage } from "@uidotdev/usehooks";
 import HelpSvg from "./HelpSvg";
 import StatsSvg from "./StatsSvg";
 import ShareSvg from "./ShareSvg";
@@ -8,23 +9,23 @@ import "./Nav.scss";
 */
 
 export default function Nav() {
+  const [, setIsInstructionsModalVisible] = useLocalStorage("isInstructionsModalVisible");
+
   return (
     <nav>
       <ul>
-        <li>
-          <a href="#">
-            <HelpSvg />
-          </a>
+        <li
+          onClick={() => {
+            setIsInstructionsModalVisible(true);
+          }}
+        >
+          <HelpSvg />
         </li>
         <li>
-          <a href="#">
-            <StatsSvg />
-          </a>
+          <StatsSvg />
         </li>
         <li>
-          <a href="#">
-            <ShareSvg />
-          </a>
+          <ShareSvg />
         </li>
       </ul>
     </nav>
