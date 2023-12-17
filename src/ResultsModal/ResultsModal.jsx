@@ -57,13 +57,14 @@ export default function ResultsModal({ isVisible, onClose, score }) {
       <Modal.Body className="results-modal-body">
         <p>You got {score} correct.</p>
         <div className="character-photo-wrapper">
-          <img src={path} width={400} />
+          <img src={path} />
         </div>
 
         <p />
         <button
-          onClick={() => {
-            copyResultsToClipboard();
+          onClick={async () => {
+            await copyResultsToClipboard();
+            alert("Results copied to clipboard");
           }}
         >
           Share
