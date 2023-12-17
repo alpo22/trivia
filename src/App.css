@@ -1,0 +1,68 @@
+body {
+  background-image: url('https://i.pinimg.com/originals/ad/1e/2c/ad1e2c0c93696b30a9a6c916cb73d4b7.jpg');
+}
+
+header ul {
+  list-style-type: none;
+  padding: 0; 
+  display: flex;
+  
+  li {
+    margin-right: 10px;
+  }
+}
+
+blockquote {
+  font-family: 'courier';
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  display: inline-block;
+}
+
+button {
+  background-color: rgb(254, 203, 0);
+  background-image: url('https://i.ibb.co/Lz35dMH/Screen-Shot-2023-12-16-at-11-39-33-AM.png');
+  background-size: 90px;
+  width: 93px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: 2px solid black;
+  color: transparent;
+}
+
+main ul {
+  list-style-type: none;
+  padding: 0; 
+  display: flex;
+  
+  li {
+    margin-right: 10px;
+    border-radius: 2px;
+    color: black;
+    background-color: white;
+    border-radius: 5px;
+    border: 2px solid white;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+  }
+}
+
+.active { border: 2px solid black; }
+.blue {
+  background-color: #0EB1D2;
+  color: white;
+}
+
+.red {
+  background-color: #C32F27;
+  border: 2px solid rgb(210, 67, 60);
+  color: white;
+}
+
+.green {
+  background-color: #5FAD56;
+  border: 2px solid #65b85c;
+  color: white;
+}
