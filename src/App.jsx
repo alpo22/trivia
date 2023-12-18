@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLocalStorage } from "@uidotdev/usehooks";
 import { Analytics } from "@vercel/analytics/react";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 import Nav from "./Nav";
 import Heading from "./Heading";
 import Quote from "./Quote";
@@ -123,7 +122,6 @@ export default function App() {
         }}
       />
       <Analytics />
-      <SpeedInsights />
     </div>
   );
 }
