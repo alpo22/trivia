@@ -8,15 +8,8 @@ form {
     flex: 1;
     margin-right: 20px;
   }
+}
 
-  button {
-    background-color: #fecb00;
-    background-image: url("https://i.ibb.co/Lz35dMH/Screen-Shot-2023-12-16-at-11-39-33-AM.png");
-    background-size: 90px;
-    border: 2px solid black;
-    border-radius: 5px;
-    color: transparent;
-    cursor: pointer;
-    width: 93px;
-  }
+.continue-button-wrapper {
+  text-align: center;
 }

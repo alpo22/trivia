@@ -1,9 +1,8 @@
 import Modal from "react-bootstrap/Modal";
+import Button from "../Button";
 import "./ResultsModal.scss";
 
 export default function ResultsModal({ isVisible, onClose, score }) {
-  //     'share' link (copy results so can paste)
-
   let title;
   let path;
 
@@ -35,11 +34,6 @@ export default function ResultsModal({ isVisible, onClose, score }) {
   }
 
   async function copyResultsToClipboard() {
-    // copy it to clipboard, need to know which got correct
-    // simpsons-quotes.com
-    // 3/5
-    // r g g r g
-
     let text = `I got ${score}/5 Simpsons Quotes correct at https://trivia-five-nu.vercel.app/`;
 
     try {
@@ -61,14 +55,14 @@ export default function ResultsModal({ isVisible, onClose, score }) {
         </div>
 
         <p />
-        <button
+        <Button
           onClick={async () => {
             await copyResultsToClipboard();
             alert("Results copied to clipboard");
           }}
         >
           Share
-        </button>
+        </Button>
       </Modal.Body>
     </Modal>
   );
