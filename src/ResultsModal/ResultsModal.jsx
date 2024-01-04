@@ -1,5 +1,5 @@
 import Modal from "react-bootstrap/Modal";
-import Button from "../Button";
+import ShareButton from "../ShareButton";
 import "./ResultsModal.scss";
 
 export default function ResultsModal({ isVisible, onClose, score }) {
@@ -9,38 +9,28 @@ export default function ResultsModal({ isVisible, onClose, score }) {
   switch (score) {
     case 0:
       title = "Worst score ever!";
-      path = "/assets/results/comic-book-guy.webp";
+      path = "/assets/results/comic-book-guy.jpg";
       break;
     case 1:
-      title = "That's un-possible";
-      path = "/assets/results/ralph.png";
+      title = "That's un-possible!";
+      path = "/assets/results/ralph.jpg";
       break;
     case 2:
       title = "Ha-ha! You're a failure.";
-      path = "/assets/results/nelson.png";
+      path = "/assets/results/nelson.jpg";
       break;
     case 3:
       title = "D'oh!";
-      path = "/assets/results/homer-doh.png";
+      path = "/assets/results/homer-doh.jpg";
       break;
     case 4:
-      title = "Excellent";
-      path = "/assets/results/burns.png";
+      title = "Excellent.";
+      path = "/assets/results/burns.jpg";
       break;
     case 5:
       title = "Woo Hoo!";
-      path = "/assets/results/homer-woohoo.png";
+      path = "/assets/results/homer-woohoo.jpg";
       break;
-  }
-
-  async function copyResultsToClipboard() {
-    let text = `I got ${score}/5 Simpsons Quotes correct at https://trivia-five-nu.vercel.app/`;
-
-    try {
-      await navigator.clipboard.writeText(text);
-    } catch (err) {
-      console.error("Failed to copy: ", err);
-    }
   }
 
   return (
@@ -49,20 +39,17 @@ export default function ResultsModal({ isVisible, onClose, score }) {
         <Modal.Title>{title}</Modal.Title>
       </Modal.Header>
       <Modal.Body className="results-modal-body">
-        <p>You got {score} correct.</p>
         <div className="character-photo-wrapper">
-          <img src={path} />
+          <img src={path} widht="360px" height="280px" />
         </div>
-
         <p />
-        <Button
-          onClick={async () => {
-            await copyResultsToClipboard();
-            alert("Results copied to clipboard");
-          }}
-        >
-          Share
-        </Button>
+        <p>
+          You got {score} out of 5 correct.
+          <br />
+          Come back again tomorrow for more quotes.
+        </p>
+
+        <ShareButton copyText={`I got ${score}/5 Simpsons Quotes correct`} />
       </Modal.Body>
     </Modal>
   );

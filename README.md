@@ -2,17 +2,18 @@ Fonts come from Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.co
 
 ## TODO:
 
+- after you are done the game, it should show results after 2 seconds (full screen). on it should be two buttons: share, view stats
+
 - the images at the end need to pre-load
 - the images at the end need to be cleaned
 - the text at the end needs to be improved
-- there may be fewer states for the last step if i reduce the # of rounds
 - adjust character images to fit in the centre of the circle
 
 - back-end, just put in a few days worth of questions
 - if i have done it today, dont let me do it again
 - track lifetime stats (localstorage)
-- need an ad
-- 4 rounds?
+- need an ad... where?
+- 4 rounds? if so, have a lot of tweaks to make
 - proper domain (route 53)
 - share with john wheeler
 - show error/warning when submit without making a choice
@@ -25,6 +26,7 @@ Fonts come from Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.co
 - can go back to previous questions
 - could show most guessed incorrect answer
 - use different state management
+- on the results screen, show their score, show the character image, the quote, and what they guessed
 
 Identify who said the 5 simpsons quotes
 https://simpsons.fandom.com/wiki/Homer_Simpson#Quotes
