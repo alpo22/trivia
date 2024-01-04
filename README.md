@@ -4,10 +4,8 @@ Fonts come from Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.co
 
 - after you are done the game, it should show results after 2 seconds (full screen). on it should be two buttons: share, view stats
 
-- the images at the end need to pre-load
-- the images at the end need to be cleaned
-- the text at the end needs to be improved
-- adjust character images to fit in the centre of the circle
+- in quotes, add character images from awais
+- in quotes, adjust character images to fit in the centre of the circle
 
 - back-end, just put in a few days worth of questions
 - if i have done it today, dont let me do it again
@@ -18,6 +16,8 @@ Fonts come from Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.co
 - share with john wheeler
 - show error/warning when submit without making a choice
 - maybe i dont even need the "Rounds" component
+- get/set proper stats from localStorage
+- replace vercel URL with proper URL in game (share button)
 
 ## TODO Fanciness:
 
@@ -27,6 +27,8 @@ Fonts come from Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.co
 - could show most guessed incorrect answer
 - use different state management
 - on the results screen, show their score, show the character image, the quote, and what they guessed
+- the images at the end need to pre-load
+- when click 'share' on last screen, copy should change to 'copied'
 
 Identify who said the 5 simpsons quotes
 https://simpsons.fandom.com/wiki/Homer_Simpson#Quotes
@@ -35,13 +37,6 @@ https://thesimpsonsquoteapi.glitch.me/ (50 quotes)
 https://www.boredpanda.com/quotes-from-the-simpsons/
 https://www.dafont.com/simpsonfont.font?text=Trivia&psize=l
 https://www.thewordfinder.com/simpsons-font-generator/
-
-- make 'share' button work (copy to clipboard, show toast)
-- fetch today's quotes and who said them
-
-- stats modal content
-- when click 'share' on last screen, copy should change to 'copied'
-- show how they did this time vs their overall (localstorage, how many played, % of time got 100%, % of correct overall)
 
 # Stack
 
