@@ -9,9 +9,9 @@ export default function InstructionsModal({ isVisible, onClose }) {
       </Modal.Header>
       <Modal.Body>
         <p>Welcome to a game for Simpsons super-fans!</p>
-        <p>Each day, five quotes from The Simpons are chosen and it is up to you to identify who said which.</p>
+        <p>Each day, five quotes from The Simpons are chosen and it is up to you to identify who said each.</p>
         <p>Compete with your friends and see how many you can get.</p>
-        <p>Enjoy!</p>
+        <p>Bye Everybody!</p>
       </Modal.Body>
     </Modal>
   );

@@ -4,12 +4,12 @@ import Button from "../Button";
 import characters from "../characters";
 import "./Input.scss";
 
-export default function Input({ isOnCurrentRound, onContinue, onSubmit }) {
+export default function Input({ isOnActiveRound, isDone, onContinue, onSubmit }) {
   const [selectedOption, setSelectedOption] = useState(null);
 
   const options = characters.map((character) => ({ value: character, label: character }));
 
-  if (isOnCurrentRound) {
+  if (isOnActiveRound) {
     return (
       <form action="javascript: null">
         <Select
@@ -31,9 +31,11 @@ export default function Input({ isOnCurrentRound, onContinue, onSubmit }) {
     );
   }
 
+  const text = isDone ? "Show results" : "Continue";
+
   return (
     <div className="continue-button-wrapper">
-      <Button onClick={onContinue}>Continue</Button>
+      <Button onClick={onContinue}>{text}</Button>
     </div>
   );
 }

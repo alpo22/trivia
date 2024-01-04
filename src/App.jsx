@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useLocalStorage } from "@uidotdev/usehooks";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
@@ -27,17 +27,16 @@ export default function App() {
       character: "Apu Nahasapeemapetilon",
       guess: null,
     },
-    {
-      quote: "He card, read good.",
-      character: "Homer Simpson",
-      guess: null,
-    },
-    {
-      quote: "Don't kid yourself, Jimmy. If a cow ever got the chance, he'd eat you and everyone you care about!",
-      character: "Troy McClure",
-      guess: null,
-    },
-
+    // {
+    //   quote: "He card, read good.",
+    //   character: "Homer Simpson",
+    //   guess: null,
+    // },
+    // {
+    //   quote: "Don't kid yourself, Jimmy. If a cow ever got the chance, he'd eat you and everyone you care about!",
+    //   character: "Troy McClure",
+    //   guess: null,
+    // },
     // {
     //   quote:
     //     "I thought I'd never hear the screams of pain or see the look of terror in a young man's eyes. Thank heaven for children!",
@@ -52,13 +51,6 @@ export default function App() {
     // },
   ]);
 
-  // TODO: why is this necessary?  After make final choice, it wasn't re-rendering (and showing results)
-  useEffect(() => {
-    if (gameData.filter((round) => round.guess).length === gameData.length) {
-      setIsResultsModalVisible(true);
-    }
-  }, [gameData]);
-
   function handleSubmit(selectedCharacter) {
     setGameData((oldState) => {
       const newState = [...oldState];
@@ -72,6 +64,8 @@ export default function App() {
       setCurrentRound((oldState) => {
         return oldState + 1;
       });
+    } else {
+      setIsResultsModalVisible(true);
     }
   }
 
@@ -95,7 +89,8 @@ export default function App() {
       <footer>
         <Rounds currentRound={currentRound} gameData={gameData} />
         <Input
-          isOnCurrentRound={currentRound === numberOfGuesses + 1}
+          isDone={gameData.length === numberOfGuesses}
+          isOnActiveRound={currentRound === numberOfGuesses + 1}
           onContinue={handleContinue}
           onSubmit={handleSubmit}
         />

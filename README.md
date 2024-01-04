@@ -2,25 +2,29 @@ Fonts come from Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.co
 
 ## TODO:
 
-- when submit last question, the continue button then opens the modal
-
-- awais is getting images of remaining 50 characters
-
-- the images at the end need to go into assets
 - the images at the end need to pre-load
 - the images at the end need to be cleaned
+- the text at the end needs to be improved
+- there may be fewer states for the last step if i reduce the # of rounds
+- adjust character images to fit in the centre of the circle
 
-- favicon
-- track lifetime stats
-- need an ad
-- 4 rounds? 5?
-- proper domain (route 53)
 - back-end, just put in a few days worth of questions
+- if i have done it today, dont let me do it again
+- track lifetime stats (localstorage)
+- need an ad
+- 4 rounds?
+- proper domain (route 53)
 - share with john wheeler
+- show error/warning when submit without making a choice
+- maybe i dont even need the "Rounds" component
 
 ## TODO Fanciness:
 
 - on start, bring title forward (like does on the show), then make modal appear
+- slide next question in from right
+- can go back to previous questions
+- could show most guessed incorrect answer
+- use different state management
 
 Identify who said the 5 simpsons quotes
 https://simpsons.fandom.com/wiki/Homer_Simpson#Quotes
@@ -32,13 +36,14 @@ https://www.thewordfinder.com/simpsons-font-generator/
 
 - make 'share' button work (copy to clipboard, show toast)
 - fetch today's quotes and who said them
-- can go back to previous step (to see why wrong)
 
 - stats modal content
-- slide next question in from right
-- could use better images with results, and add more text
 - when click 'share' on last screen, copy should change to 'copied'
-- can i get the simpsons ttf/otf font working instead of using images?
-- can i close the 'results' at the end? cant refresh page
 - show how they did this time vs their overall (localstorage, how many played, % of time got 100%, % of correct overall)
-- could show most guessed incorrect answer
+
+# Stack
+
+Vite
+React
+Vercel + GitHub Actions
+StoryBook
