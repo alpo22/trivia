@@ -4,8 +4,8 @@ Fonts come from Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.co
 
 - The NextJS seems to work...
 
+  - update the api path to / (in page.js)
   - move it to the main folder
-  - re-add storybook
   - fix the console error about useLocalStorage is a client-only hook
   - merge this branch into master (so it deploys)
   - try deploying it, see if it still works
@@ -21,7 +21,7 @@ Fonts come from Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.co
 
 ## TODO Fanciness:
 
-- is free Vercel app too slow?
+- is free Vercel app too slow on cold start?
 - add dr nick image to the welcome screen?
 - if anyone plays it, need an ad... where?
 - on start, bring title forward (like does on the show), then make modal appear
