@@ -1,4 +1,4 @@
-import Button from "../Button";
+import Button from "../components/Button";
 import { URL } from "../constants";
 import { copyStringToClipboard } from "../utils";
 import "./ShareButton.scss";

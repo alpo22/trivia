@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Select from "react-select";
-import Button from "../Button";
+import Button from "../components/Button";
 import characters from "../characters";
 import "./Input.scss";
 
