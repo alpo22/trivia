@@ -2,8 +2,16 @@ Fonts come from Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.co
 
 ## TODO:
 
+- The NextJS seems to work...
+
+  - move it to the main folder
+  - re-add storybook
+  - fix the console error about useLocalStorage is a client-only hook
+  - merge this branch into master (so it deploys)
+  - try deploying it, see if it still works
+  - update existing quotes date in vercel
+
 - back-end, just put in one week's few days worth of quotes, add one quote per character
-  - do i need to change this to be next.js? that could be a good exercise
 - get/set proper stats from localStorage
 - if i have done it today, dont let me do it again
 - add character images from awais, adjust to fit in the centre of the circle
@@ -13,6 +21,7 @@ Fonts come from Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.co
 
 ## TODO Fanciness:
 
+- is free Vercel app too slow?
 - add dr nick image to the welcome screen?
 - if anyone plays it, need an ad... where?
 - on start, bring title forward (like does on the show), then make modal appear

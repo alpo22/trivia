@@ -1,0 +1,37 @@
+ul.rounds {
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+  width: 210px;
+  justify-content: space-between;
+  align-self: center;
+
+  li {
+    background-color: white;
+    border-radius: 5px;
+    border: 2px solid #e5e5e5;
+    color: black;
+    height: 25px;
+    width: 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .active {
+    border: 2px solid black;
+  }
+
+  .red {
+    background-color: #c32f27;
+    border: 2px solid #d2433c;
+    color: white;
+  }
+
+  .green {
+    background-color: #5fad56;
+    border: 2px solid #65b85c;
+    color: white;
+  }
+}
