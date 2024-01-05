@@ -1,25 +1,13 @@
 import { useLocalStorage } from "@uidotdev/usehooks";
+import { URL } from "../constants";
+import { copyStringToClipboard } from "../utils";
 import HelpSvg from "./HelpSvg";
 import StatsSvg from "./StatsSvg";
 import ShareSvg from "./ShareSvg";
 import "./Nav.scss";
 
-/*
-<!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
-*/
-
 export default function Nav() {
   const [, setIsInstructionsModalVisible] = useLocalStorage("isInstructionsModalVisible");
-
-  async function copyMessageToClipboard() {
-    let text = `Try Simpsons Quotes game at https://trivia-five-nu.vercel.app/`;
-
-    try {
-      await navigator.clipboard.writeText(text);
-    } catch (err) {
-      console.error("Failed to copy: ", err);
-    }
-  }
 
   return (
     <nav>
@@ -40,7 +28,7 @@ export default function Nav() {
         </li>
         <li
           onClick={async () => {
-            await copyMessageToClipboard();
+            await copyStringToClipboard(`Try Simpsons Quotes game at ${URL}`);
             alert("Link copied to your clipboard.");
           }}
         >

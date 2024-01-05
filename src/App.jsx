@@ -27,11 +27,11 @@ export default function App() {
       character: "Apu Nahasapeemapetilon",
       guess: null,
     },
-    // {
-    //   quote: "He card, read good.",
-    //   character: "Homer Simpson",
-    //   guess: null,
-    // },
+    {
+      quote: "He card, read good.",
+      character: "Homer Simpson",
+      guess: null,
+    },
     // {
     //   quote: "Don't kid yourself, Jimmy. If a cow ever got the chance, he'd eat you and everyone you care about!",
     //   character: "Troy McClure",
@@ -96,11 +96,15 @@ export default function App() {
         />
       </footer>
       <ResultsModal
-        score={score}
         isVisible={isResultsModalVisible}
         onClose={() => {
           setIsResultsModalVisible(false);
         }}
+        onClickViewMyStats={() => {
+          setIsResultsModalVisible(false);
+          setIsStatsModalVisible(true);
+        }}
+        score={score}
       />
       <StatsModal
         isVisible={isStatsModalVisible}

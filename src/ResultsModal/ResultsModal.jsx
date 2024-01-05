@@ -1,8 +1,10 @@
 import Modal from "react-bootstrap/Modal";
 import ShareButton from "../ShareButton";
+import { NUMBER_OF_ROUNDS } from "../constants";
 import "./ResultsModal.scss";
+import Button from "../Button";
 
-export default function ResultsModal({ isVisible, onClose, score }) {
+export default function ResultsModal({ isVisible, onClickViewMyStats, onClose, score }) {
   let title;
   let path;
 
@@ -12,7 +14,7 @@ export default function ResultsModal({ isVisible, onClose, score }) {
       path = "/assets/results/comic-book-guy.jpg";
       break;
     case 1:
-      title = "That's un-possible!";
+      title = "We're special!";
       path = "/assets/results/ralph.jpg";
       break;
     case 2:
@@ -44,12 +46,12 @@ export default function ResultsModal({ isVisible, onClose, score }) {
         </div>
         <p />
         <p>
-          You got {score} out of 5 correct.
+          You got {score} out of {NUMBER_OF_ROUNDS} correct.
           <br />
           Come back again tomorrow for more quotes.
         </p>
-
-        <ShareButton copyText={`I got ${score}/5 Simpsons Quotes correct`} />
+        <ShareButton copyText={`I got ${score}/${NUMBER_OF_ROUNDS} Simpsons Quotes correct`} />
+        <Button onClick={onClickViewMyStats}>View my stats</Button>
       </Modal.Body>
     </Modal>
   );

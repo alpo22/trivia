@@ -2,25 +2,19 @@ Fonts come from Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.co
 
 ## TODO:
 
-- after you are done the game, it should show results after 2 seconds (full screen). on it should be two buttons: share, view stats
-
-- in quotes, add character images from awais
-- in quotes, adjust character images to fit in the centre of the circle
-
-- back-end, just put in a few days worth of questions
-- if i have done it today, dont let me do it again
-- track lifetime stats (localstorage)
-- need an ad... where?
-- 4 rounds? if so, have a lot of tweaks to make
-- proper domain (route 53)
-- share with john wheeler
-- show error/warning when submit without making a choice
-- maybe i dont even need the "Rounds" component
+- back-end, just put in one week's few days worth of quotes, add one quote per character
+  - do i need to change this to be next.js? that could be a good exercise
 - get/set proper stats from localStorage
-- replace vercel URL with proper URL in game (share button)
+- if i have done it today, dont let me do it again
+- add character images from awais, adjust to fit in the centre of the circle
+- proper domain (route 53)
+- replace vercel URL with proper URL in game (constants.js)
+- share with john wheeler
 
 ## TODO Fanciness:
 
+- add dr nick image to the welcome screen?
+- if anyone plays it, need an ad... where?
 - on start, bring title forward (like does on the show), then make modal appear
 - slide next question in from right
 - can go back to previous questions
@@ -29,6 +23,7 @@ Fonts come from Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.co
 - on the results screen, show their score, show the character image, the quote, and what they guessed
 - the images at the end need to pre-load
 - when click 'share' on last screen, copy should change to 'copied'
+- show error/warning when submit without making a choice
 
 Identify who said the 5 simpsons quotes
 https://simpsons.fandom.com/wiki/Homer_Simpson#Quotes
