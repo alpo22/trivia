@@ -5,7 +5,6 @@ Fonts come from Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.co
 - fix the console error about useLocalStorage is a client-only hook
 - merge this branch into master (so it deploys)
 - try deploying it, see if it still works (need to update links)
-- if i have done it today, dont let me do it again
 
 - add character images from awais, adjust to fit in the centre of the circle
 - proper domain (route 53)
