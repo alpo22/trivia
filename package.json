@@ -1,27 +1,27 @@
 {
-  "name": "testxxx",
+  "name": "my-app",
+  "version": "0.1.0",
   "private": true,
-  "version": "0.0.0",
-  "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
   "dependencies": {
     "@uidotdev/usehooks": "^2.4.1",
     "@vercel/analytics": "^1.1.1",
+    "@vercel/postgres": "^0.5.1",
     "@vercel/speed-insights": "^1.0.2",
     "bootstrap": "^5.3.2",
-    "classnames": "^2.5.1",
-    "react": "^18.2.0",
-    "react-bootstrap": "^2.9.1",
-    "react-dom": "^18.2.0",
+    "next": "14.0.4",
+    "react": "^18",
+    "react-bootstrap": "^2.9.2",
+    "react-dom": "^18",
     "react-select": "^5.8.0",
-    "sass": "^1.69.5"
+    "sass": "^1.69.7"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "^7.6.7",
@@ -29,19 +29,12 @@
     "@storybook/addon-links": "^7.6.7",
     "@storybook/addon-onboarding": "^1.0.10",
     "@storybook/blocks": "^7.6.7",
+    "@storybook/nextjs": "^7.6.7",
     "@storybook/react": "^7.6.7",
-    "@storybook/react-vite": "^7.6.7",
     "@storybook/test": "^7.6.7",
-    "@types/react": "^18.2.43",
-    "@types/react-dom": "^18.2.17",
-    "@vitejs/plugin-react": "^4.2.1",
-    "eslint": "^8.55.0",
-    "eslint-plugin-react": "^7.33.2",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-react-refresh": "^0.4.5",
+    "eslint": "^8",
+    "eslint-config-next": "14.0.4",
     "eslint-plugin-storybook": "^0.6.15",
-    "prop-types": "^15.8.1",
-    "storybook": "^7.6.7",
-    "vite": "^5.0.8"
+    "storybook": "^7.6.7"
   }
 }

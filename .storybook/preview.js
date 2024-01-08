@@ -1,7 +1,6 @@
 /** @type { import('@storybook/react').Preview } */
-
 import "bootstrap/dist/css/bootstrap.min.css";
-import "../src/App.scss";
+import "../src/app/App.scss";
 
 const preview = {
   parameters: {
