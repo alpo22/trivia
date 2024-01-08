@@ -1,6 +1,6 @@
 import { useLocalStorage } from "@uidotdev/usehooks";
-import { URL } from "../../constants";
-import { copyStringToClipboard } from "../../utils";
+import { URL } from "../../utils/constants";
+import { copyStringToClipboard } from "../../utils/utils";
 import HelpSvg from "./HelpSvg";
 import StatsSvg from "./StatsSvg";
 import ShareSvg from "./ShareSvg";

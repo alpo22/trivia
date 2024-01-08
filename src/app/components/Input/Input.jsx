@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Select from "react-select";
 import Button from "../Button";
-import characters from "../../characters";
+import characters from "../../utils/characters";
 import "./Input.scss";
 
 export default function Input({ isOnActiveRound, isDone, onContinue, onSubmit }) {

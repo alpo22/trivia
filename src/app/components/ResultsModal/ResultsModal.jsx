@@ -1,7 +1,7 @@
 import Modal from "react-bootstrap/Modal";
 import Button from "../Button";
 import ShareButton from "../ShareButton";
-import { NUMBER_OF_ROUNDS } from "../../constants";
+import { NUMBER_OF_ROUNDS } from "../../utils/constants";
 import "./ResultsModal.scss";
 
 export default function ResultsModal({ isVisible, onClickViewMyStats, onClose, score }) {

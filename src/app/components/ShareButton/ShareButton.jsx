@@ -1,6 +1,6 @@
 import Button from "../Button";
-import { URL } from "../../constants";
-import { copyStringToClipboard } from "../../utils";
+import { URL } from "../../utils/constants";
+import { copyStringToClipboard } from "../../utils/utils";
 import "./ShareButton.scss";
 
 export default function ShareButton({ copyText }) {
