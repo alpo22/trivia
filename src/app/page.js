@@ -5,7 +5,7 @@ async function getQuotes() {
   const res = await fetch(`${URL}/api/quotes`, { cache: "no-store" });
 
   if (!res.ok) {
-    throw new Error("Failed to fetch data");
+    throw new Error("Failed to fetch quotes from API");
   }
 
   const data = await res.json();
