@@ -1,7 +1,8 @@
 import App from "./App";
+import { URL } from "./utils/constants";
 
 async function getQuotes() {
-  const res = await fetch("http://localhost:3000/api/quotes", { cache: "no-store" });
+  const res = await fetch(`${URL}/api/quotes`, { cache: "no-store" });
 
   if (!res.ok) {
     throw new Error("Failed to fetch data");
