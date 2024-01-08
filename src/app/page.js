@@ -14,5 +14,5 @@ async function getQuotes() {
 export default async function Home() {
   const quotes = await getQuotes();
 
-  return <App quotes={quotes} />;
+  return <App quotes={quotes} todaysDate={quotes[0].qdate} />;
 }

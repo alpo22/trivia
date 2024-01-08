@@ -1,14 +1,65 @@
 import Modal from "react-bootstrap/Modal";
 import Bar from "./Bar";
 import ShareButton from "../ShareButton";
+import { NUMBER_OF_ROUNDS } from "../../utils/constants";
 import "./StatsModal.scss";
 
-export default function StatsModal({ isVisible, onClose, score0, score1, score2, score3, score4, score5 }) {
-  const max = Math.max(score0, score1, score2, score3, score4, score5);
+export default function StatsModal({ isVisible, onClose, scores }) {
+  let numberTimesScored0 = 0;
+  let numberTimesScored1 = 0;
+  let numberTimesScored2 = 0;
+  let numberTimesScored3 = 0;
+  let numberTimesScored4 = 0;
+  let numberTimesScored5 = 0;
 
-  const timesPlayed = score0 + score1 + score2 + score3 + score4 + score5;
-  const questionsCorrect = score1 + score2 * 2 + score3 * 3 + score4 * 4 + score5 * 5;
-  const totalQuestions = 5 * timesPlayed;
+  scores.forEach((scoreData) => {
+    switch (scoreData.score) {
+      case 0:
+        numberTimesScored0++;
+        break;
+      case 1:
+        numberTimesScored1++;
+        break;
+      case 2:
+        numberTimesScored2++;
+        break;
+      case 3:
+        numberTimesScored3++;
+        break;
+      case 4:
+        numberTimesScored4++;
+        break;
+      case 5:
+        numberTimesScored5++;
+        break;
+    }
+  });
+
+  const max = Math.max(
+    numberTimesScored0,
+    numberTimesScored1,
+    numberTimesScored2,
+    numberTimesScored3,
+    numberTimesScored4,
+    numberTimesScored5
+  );
+
+  const timesPlayed =
+    numberTimesScored0 +
+    numberTimesScored1 +
+    numberTimesScored2 +
+    numberTimesScored3 +
+    numberTimesScored4 +
+    numberTimesScored5;
+
+  const questionsCorrect =
+    numberTimesScored1 +
+    numberTimesScored2 * 2 +
+    numberTimesScored3 * 3 +
+    numberTimesScored4 * 4 +
+    numberTimesScored5 * 5;
+
+  const totalQuestions = NUMBER_OF_ROUNDS * timesPlayed;
   const overallScore = Math.round((questionsCorrect / totalQuestions) * 100);
 
   return (
@@ -23,17 +74,17 @@ export default function StatsModal({ isVisible, onClose, score0, score1, score2,
             <div>{timesPlayed}</div>
           </section>
           <section>
-            <header>Overall score:</header>
+            <header>Accuracy:</header>
             <div>{overallScore}%</div>
           </section>
         </div>
         <h6>Score distribution:</h6>
-        <Bar label="0" score={score0} max={max} />
-        <Bar label="1" score={score1} max={max} />
-        <Bar label="2" score={score2} max={max} />
-        <Bar label="3" score={score3} max={max} />
-        <Bar label="4" score={score4} max={max} />
-        <Bar label="5" score={score5} max={max} />
+        <Bar label="0" score={numberTimesScored0} max={max} />
+        <Bar label="1" score={numberTimesScored1} max={max} />
+        <Bar label="2" score={numberTimesScored2} max={max} />
+        <Bar label="3" score={numberTimesScored3} max={max} />
+        <Bar label="4" score={numberTimesScored4} max={max} />
+        <Bar label="5" score={numberTimesScored5} max={max} />
         <ShareButton copyText={`I've identified ${overallScore}% of Simpsons Quotes`} />
       </Modal.Body>
     </Modal>

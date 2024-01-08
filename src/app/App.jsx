@@ -15,11 +15,12 @@ import StatsModal from "./components/StatsModal";
 import "./App.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-export default function App({ quotes }) {
+export default function App({ quotes, todaysDate }) {
   const [isInstructionsModalVisible, setIsInstructionsModalVisible] = useLocalStorage(
     "isInstructionsModalVisible",
     true
   );
+  const [scores, setScores] = useLocalStorage("scores", JSON.stringify([]));
   const [isResultsModalVisible, setIsResultsModalVisible] = useState(false);
   const [isStatsModalVisible, setIsStatsModalVisible] = useState(false);
   const [currentRound, setCurrentRound] = useState(1);
@@ -34,6 +35,15 @@ export default function App({ quotes }) {
       newState[currentRound - 1].guess = selectedCharacter;
       return newState;
     });
+
+    function recordScoreToLocalStorage() {
+      const currentScore = gameData.filter((round) => round.character === round.guess).length;
+      const newScores = JSON.parse(scores).filter((score) => score.date !== todaysDate);
+      newScores.push({ date: todaysDate, score: currentScore });
+      setScores(JSON.stringify(newScores));
+    }
+
+    recordScoreToLocalStorage();
   }
 
   function handleContinue() {
@@ -50,13 +60,17 @@ export default function App({ quotes }) {
     setIsInstructionsModalVisible(false);
   }
 
+  function handleClickShowStats() {
+    setIsStatsModalVisible(true);
+  }
+
   const score = gameData.filter((round) => round.guess === round.character).length;
   const numberOfGuesses = gameData.filter((round) => round.guess).length;
 
   return (
     <div className="app-wrapper">
       <InstructionsModal isVisible={isInstructionsModalVisible} onClose={handleCloseInstructionsModal} />
-      <Nav />
+      <Nav onClickShowStats={handleClickShowStats} />
       <Heading />
       <Quote
         character={gameData[currentRound - 1].character}
@@ -88,6 +102,7 @@ export default function App({ quotes }) {
         onClose={() => {
           setIsStatsModalVisible(false);
         }}
+        scores={JSON.parse(scores)}
       />
       <Analytics />
       <SpeedInsights />

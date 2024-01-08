@@ -6,7 +6,7 @@ import StatsSvg from "./StatsSvg";
 import ShareSvg from "./ShareSvg";
 import "./Nav.scss";
 
-export default function Nav() {
+export default function Nav({ onClickShowStats }) {
   const [, setIsInstructionsModalVisible] = useLocalStorage("isInstructionsModalVisible");
 
   return (
@@ -19,11 +19,7 @@ export default function Nav() {
         >
           <HelpSvg />
         </li>
-        <li
-          onClick={() => {
-            alert("Have you ever heard of feature creep?");
-          }}
-        >
+        <li onClick={onClickShowStats}>
           <StatsSvg />
         </li>
         <li
