@@ -2,18 +2,17 @@ Fonts come from Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.co
 
 ## TODO:
 
-- fix the console error about useLocalStorage is a client-only hook
-- merge this branch into master (so it deploys)
-- try deploying it, see if it still works (need to update links)
+- try deploying it, see if it still works (need to update link to API)
 
 - add character images from awais, adjust to fit in the centre of the circle
-- proper domain (route 53)
+- proper domain anecdohtes.com (route 53)
 - replace vercel URL with proper URL in game (constants.js)
 - share with john wheeler
 - back-end, just put in one week's few days worth of quotes, add one quote per character
 
 ## TODO Fanciness:
 
+- fix the console error about useLocalStorage is a client-only hook
 - affiliate link to 'duff beer' on amazon
 - is free Vercel app too slow on cold start?
 - add dr nick image to the welcome screen?
