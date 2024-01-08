@@ -2,13 +2,11 @@ Fonts come from Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.co
 
 ## TODO:
 
-- The NextJS seems to work...
-
-  - fix the console error about useLocalStorage is a client-only hook
-  - merge this branch into master (so it deploys)
-  - try deploying it, see if it still works (need to update links)
-
+- fix the console error about useLocalStorage is a client-only hook
+- merge this branch into master (so it deploys)
+- try deploying it, see if it still works (need to update links)
 - if i have done it today, dont let me do it again
+
 - add character images from awais, adjust to fit in the centre of the circle
 - proper domain (route 53)
 - replace vercel URL with proper URL in game (constants.js)
@@ -31,6 +29,7 @@ Fonts come from Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.co
 - when click 'share' on last screen, copy should change to 'copied'
 - show error/warning when submit without making a choice
 - update the api path to / (in page.js). That didnt work in dev.
+- you can cheat and look at the API response to see the answers...
 
 Identify who said the 5 simpsons quotes
 https://simpsons.fandom.com/wiki/Homer_Simpson#Quotes

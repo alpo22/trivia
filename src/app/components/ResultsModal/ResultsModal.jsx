@@ -1,6 +1,6 @@
 import Modal from "react-bootstrap/Modal";
-import Button from "../Button";
 import ShareButton from "../ShareButton";
+import ViewStatsButton from "../ViewStatsButton";
 import { NUMBER_OF_ROUNDS } from "../../utils/constants";
 import "./ResultsModal.scss";
 
@@ -51,7 +51,7 @@ export default function ResultsModal({ isVisible, onClickViewMyStats, onClose, s
           Come back again tomorrow for more quotes.
         </p>
         <ShareButton copyText={`I got ${score}/${NUMBER_OF_ROUNDS} Simpsons Quotes correct`} />
-        <Button onClick={onClickViewMyStats}>View my stats</Button>
+        <ViewStatsButton onClick={onClickViewMyStats} />
       </Modal.Body>
     </Modal>
   );
