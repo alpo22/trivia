@@ -18,7 +18,7 @@ export default function Quote({ character, guess, text }) {
 
   return (
     <div className="quote">
-      <blockquote>"{text}"</blockquote>
+      <blockquote>&quot;{text}&quot;</blockquote>
       <div className={cn}>{Content}</div>
     </div>
   );
