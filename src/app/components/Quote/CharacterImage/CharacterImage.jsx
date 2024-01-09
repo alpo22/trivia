@@ -2,7 +2,7 @@ import classNames from "classnames";
 import "./CharacterImage.scss";
 
 export default function CharacterImage({ character, guess }) {
-  const imagePath = character.replace(" ", "_");
+  const imagePath = character.replaceAll(" ", "_");
   const Content = guess ? <img src={`/assets/characters/${imagePath}.webp`} /> : "?";
 
   const cn = classNames(
