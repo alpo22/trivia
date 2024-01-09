@@ -12,7 +12,7 @@ Fonts come from Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.co
 
 ## TODO Fanciness:
 
-- fix the console error about useLocalStorage is a client-only hook
+- handle if there are no quotes returned from DB
 - affiliate link to 'duff beer' on amazon
 - if anyone plays it, need an ad... where?
 - is free Vercel app too slow on cold start?
