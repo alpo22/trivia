@@ -1,19 +1,13 @@
-import App from "./App";
-import { URL } from "./utils/constants";
+import dynamic from "next/dynamic";
 
-async function getQuotes() {
-  const res = await fetch(`${URL}/api/quotes`, { cache: "no-store" });
+const DynamicComponentWithNoSSR = dynamic(() => import("./AppWrapper"), {
+  ssr: false,
+});
 
-  if (!res.ok) {
-    throw new Error("Failed to fetch quotes from API");
-  }
-
-  const data = await res.json();
-  return data.quotes;
+function Page() {
+  return <DynamicComponentWithNoSSR />;
 }
 
-export default async function Home() {
-  const quotes = await getQuotes();
+Page.displayName = "Page";
 
-  return <App quotes={quotes} todaysDate={quotes[0].qdate} />;
-}
+export default Page;
