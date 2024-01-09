@@ -2,8 +2,6 @@ Fonts come from Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.co
 
 ## TODO:
 
-- try deploying it, see if it still works (need to update link to API)
-
 - add character images from awais, adjust to fit in the centre of the circle
 - proper domain anecdohtes.com (route 53)
 - replace vercel URL with proper URL in game (constants.js)
@@ -12,6 +10,7 @@ Fonts come from Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.co
 
 ## TODO Fanciness:
 
+- add more quotes
 - handle if there are no quotes returned from DB
 - affiliate link to 'duff beer' on amazon
 - if anyone plays it, need an ad... where?
