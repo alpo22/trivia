@@ -50,8 +50,10 @@ export default function ResultsModal({ isVisible, onClickViewMyStats, onClose, s
           <br />
           Come back again tomorrow for more quotes.
         </p>
-        <ShareButton copyText={`I got ${score}/${NUMBER_OF_ROUNDS} Simpsons Quotes correct`} />
-        <ViewStatsButton onClick={onClickViewMyStats} />
+        <div className="results-modal__buttons">
+          <ShareButton copyText={`I got ${score}/${NUMBER_OF_ROUNDS} Simpsons Quotes correct`} />
+          <ViewStatsButton onClick={onClickViewMyStats} />
+        </div>
       </Modal.Body>
     </Modal>
   );

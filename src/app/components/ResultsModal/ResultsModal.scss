@@ -4,4 +4,15 @@
   .character-photo-wrapper {
     overflow: hidden;
   }
+
+  .results-modal__buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .share-button {
+      margin-top: 0;
+      margin-right: 16px;
+    }
+  }
 }
