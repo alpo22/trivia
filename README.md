@@ -1,5 +1,17 @@
 Fonts come from Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.
 
+# Welcome!
+
+This is a fun little Simpsons Quote trivia game, inspired by games like Wordle or Framed.wtf. Each day you will see five Simpsons quotes and it is up to you to identify who said which. Stats are stored locally. Share and compete with friends.
+
+# Stack
+
+Next.js + React
+Vercel + GitHub
+StoryBook
+LocalStorage
+NameCheap.com
+
 ## TODO:
 
 - make sure it works
@@ -33,11 +45,3 @@ https://thesimpsonsquoteapi.glitch.me/ (50 quotes)
 https://www.boredpanda.com/quotes-from-the-simpsons/
 https://www.dafont.com/simpsonfont.font?text=Trivia&psize=l
 https://www.thewordfinder.com/simpsons-font-generator/
-
-# Stack
-
-React
-Next.js
-Vercel + GitHub Actions
-StoryBook
-LocalStorage
