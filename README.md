@@ -1,4 +1,4 @@
-This is a fun little Simpsons Quote trivia game, inspired by games like Wordle or Framed.wtf. Each day you will see five Simpsons quotes and it is up to you to identify who said which. Stats are stored locally. Share and compete with friends. Play here: [anecdohtes.com](https://www.anecdohtes.com)
+This is a fun little Simpsons Quote trivia game, inspired by games like [Wordle](https://www.nytimes.com/games/wordle/index.html) or [Framed](www.framed.wtf). Each day you will see five Simpsons quotes and it is up to you to identify who said which. Stats are stored locally. Share and compete with friends. Play here: [anecdohtes.com](https://www.anecdohtes.com)
 
 ## Stack
 
@@ -33,6 +33,7 @@ This is a fun little Simpsons Quote trivia game, inspired by games like Wordle o
 - when click 'share' on last screen, copy should change to 'copied'
 - show error/warning when submit without making a choice
 - you can cheat and look at the API response to see the answers...
+- TypeScript
 
 ## Resources
 
