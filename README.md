@@ -1,16 +1,12 @@
-Fonts come from Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.
-
-# Welcome!
-
 This is a fun little Simpsons Quote trivia game, inspired by games like Wordle or Framed.wtf. Each day you will see five Simpsons quotes and it is up to you to identify who said which. Stats are stored locally. Share and compete with friends.
 
-# Stack
+## Stack
 
-Next.js + React
-Vercel + GitHub
-StoryBook
-LocalStorage
-NameCheap.com
+- Next.js + React
+- Vercel + GitHub
+- StoryBook
+- LocalStorage
+- NameCheap.com
 
 ## TODO:
 
@@ -19,7 +15,7 @@ NameCheap.com
 - back-end, just put in one week's few days worth of quotes, add one quote per character
 - share on Reddit
 
-## TODO Fanciness:
+## TODO v2:
 
 - after no one uses it, i still want it on my portfolio but dont want to be entering more quotes. make it choose random ones.
 - add more quotes
@@ -38,10 +34,13 @@ NameCheap.com
 - show error/warning when submit without making a choice
 - you can cheat and look at the API response to see the answers...
 
-Identify who said the 5 simpsons quotes
+## Resources
+
 https://simpsons.fandom.com/wiki/Homer_Simpson#Quotes
 http://www.notable-quotes.com/s/simpsons_quotes_v.html
 https://thesimpsonsquoteapi.glitch.me/ (50 quotes)
 https://www.boredpanda.com/quotes-from-the-simpsons/
-https://www.dafont.com/simpsonfont.font?text=Trivia&psize=l
-https://www.thewordfinder.com/simpsons-font-generator/
+
+# Acknowledgements
+
+Fonts come from Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.
