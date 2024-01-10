@@ -10,7 +10,6 @@ AnecDOH!tes is a fun little Simpsons Quote trivia game, inspired by games like [
 
 ## TODO:
 
-- make sure it works
 - share with john wheeler
 - back-end, just put in one week's few days worth of quotes, add one quote per character
 - share on Reddit
