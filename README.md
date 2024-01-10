@@ -9,10 +9,12 @@ Fonts come from Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.co
 
 ## TODO Fanciness:
 
+- after no one uses it, i still want it on my portfolio but dont want to be entering more quotes. make it choose random ones.
 - add more quotes
 - handle if there are no quotes returned from DB
 - affiliate link to 'duff beer' on amazon, or an ad somewhere
 - improve quality of character images (get someone to make them a square)
+  - is the game too hard? needs to be multiple choice?
 - is free Vercel app too slow on cold start?
 - on start, bring title forward (like does on the show), then make modal appear
 - slide next question in from right

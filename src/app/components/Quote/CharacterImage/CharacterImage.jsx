@@ -16,5 +16,10 @@ export default function CharacterImage({ character, guess }) {
     }
   );
 
-  return <div className={cn}>{Content}</div>;
+  return (
+    <div className="character-image-wrapper">
+      <div className={cn}>{Content}</div>
+      {guess && <label>{character}</label>}
+    </div>
+  );
 }

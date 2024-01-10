@@ -7,18 +7,6 @@ export default {
 };
 
 export const AllCharacters = {
-  render: () => (
-    <>
-      <table>
-        {characters.map((character) => (
-          <tr key={character}>
-            <td>{character}</td>
-            <td>
-              <CharacterImage character={character} guess={character} />
-            </td>
-          </tr>
-        ))}
-      </table>
-    </>
-  ),
+  render: () =>
+    characters.map((character) => <CharacterImage character={character} guess={character} key={character} />),
 };
