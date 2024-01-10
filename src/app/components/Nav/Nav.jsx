@@ -24,7 +24,7 @@ export default function Nav({ onClickShowStats }) {
         </li>
         <li
           onClick={async () => {
-            await copyStringToClipboard(`Try Simpsons Quotes game at ${URL}`);
+            await copyStringToClipboard(`Know your Simpsons quotes? Try the game at ${URL}`);
             alert("Link copied to your clipboard.");
           }}
         >
