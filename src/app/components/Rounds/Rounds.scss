@@ -24,14 +24,14 @@ ul.rounds {
   }
 
   .red {
-    background-color: #c32f27;
-    border: 2px solid #d2433c;
+    background-color: var(--red);
+    border: 2px solid var(--red-light);
     color: white;
   }
 
   .green {
-    background-color: #5fad56;
-    border: 2px solid #65b85c;
+    background-color: var(--green);
+    border: 2px solid var(--green-light);
     color: white;
   }
 }

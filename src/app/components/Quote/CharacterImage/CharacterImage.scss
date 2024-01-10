@@ -28,9 +28,9 @@
 }
 
 .character-image--correct-guess {
-  border: 4px solid #5fad56;
+  border: 4px solid var(--green);
 }
 
 .character-image--incorrect-guess {
-  border: 4px solid #c32f27;
+  border: 4px solid var(--red);
 }

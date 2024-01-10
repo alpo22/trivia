@@ -16,6 +16,14 @@
   src: url("/assets/Kalam.ttf") format("truetype");
 }
 
+:root {
+  --red: #c32f27;
+  --red-light: #d2433c;
+  --green: #5fad56;
+  --green-light: #65b85c;
+  --yellow: #fecb00;
+}
+
 html,
 body,
 #root,
