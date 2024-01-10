@@ -1,4 +1,4 @@
-This is a fun little Simpsons Quote trivia game, inspired by games like Wordle or Framed.wtf. Each day you will see five Simpsons quotes and it is up to you to identify who said which. Stats are stored locally. Share and compete with friends.
+This is a fun little Simpsons Quote trivia game, inspired by games like Wordle or Framed.wtf. Each day you will see five Simpsons quotes and it is up to you to identify who said which. Stats are stored locally. Share and compete with friends. Play here: [anecdohtes.com](https://www.anecdohtes.com)
 
 ## Stack
 
