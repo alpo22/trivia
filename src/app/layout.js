@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "AnecDOHtes",
+  title: "AnecDOH!tes",
   description: "Simpsons quote game",
 };
 
