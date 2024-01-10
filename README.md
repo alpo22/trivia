@@ -2,7 +2,6 @@ Fonts come from Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.co
 
 ## TODO:
 
-- replace vercel URL with proper URL in game (constants.js)
 - make sure it works
 - share with john wheeler
 - back-end, just put in one week's few days worth of quotes, add one quote per character
