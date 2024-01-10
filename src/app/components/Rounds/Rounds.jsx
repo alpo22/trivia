@@ -6,20 +6,20 @@ export default function Rounds({ currentRound, gameData }) {
   return (
     <ul className="rounds">
       {gameData.map((roundData, index) => {
-        let cn;
+        let cn = "";
         let Content = null;
 
         if (currentRound - 1 === index) {
-          cn += ` active`;
+          cn += `active `;
         }
 
         if (roundData.guess === null) {
           // do nothing
         } else if (roundData.guess === roundData.character) {
-          cn += ` green`;
+          cn += `green`;
           Content = <CheckSvg />;
         } else {
-          cn += ` red`;
+          cn += `red`;
           Content = <Xsvg />;
         }
 

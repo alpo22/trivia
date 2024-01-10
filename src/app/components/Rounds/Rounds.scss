@@ -19,10 +19,6 @@ ul.rounds {
     justify-content: center;
   }
 
-  .active {
-    border: 2px solid black;
-  }
-
   .red {
     background-color: var(--red);
     border: 2px solid var(--red-light);
@@ -33,5 +29,9 @@ ul.rounds {
     background-color: var(--green);
     border: 2px solid var(--green-light);
     color: white;
+  }
+
+  .active {
+    border: 2px solid black;
   }
 }
