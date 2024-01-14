@@ -15,11 +15,11 @@ AnecDOH!tes is a fun little Simpsons Quote trivia game, inspired by games like [
 ## TODO v2:
 
 - after no one uses it, i still want it on my portfolio but dont want to be entering more quotes. make it choose random ones.
-- add more quotes
+- if people use it, add more quotes Jan 16
 - handle if there are no quotes returned from DB
-- affiliate link to 'duff beer' on amazon, or an ad somewhere
+- affiliate link to 'duff beer' on amazon, or an ad somewhere (after question 3?)
 - improve quality of character images (get someone to make them a square)
-  - is the game too hard? needs to be multiple choice?
+  - is the game too hard? John got zero. Needs to be multiple choice?
 - is free Vercel app too slow on cold start?
 - on start, bring title forward (like does on the show), then make modal appear
 - slide next question in from right
