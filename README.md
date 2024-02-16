@@ -17,6 +17,14 @@ The `preview` branch deploys to the `preview` branch (and URL) of Vercel (https:
 
 Running `npm run dev` locally seems to use the `main` database.
 
+## Database
+
+Currently using Vercel's database but it's too expensive, so moving to PlanetScale for free.
+
+Access Vercel's database via Vercel.
+
+Acess PlanetScale's database via PlanetScale, or SequelAce.
+
 ## TODO:
 
 - I have environment variables and `.env` and `.env.local`... are they all necessary? Some environment variables were for Vercel DB so wont need those any more.
