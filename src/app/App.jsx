@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocalStorage } from "@uidotdev/usehooks";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
@@ -13,10 +13,14 @@ import Input from "./components/Input";
 import InstructionsModal from "./components/InstructionsModal";
 import ResultsModal from "./components/ResultsModal";
 import StatsModal from "./components/StatsModal";
+import { URL } from "./utils/constants";
 import "./App.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-export default function App({ quotes, todaysDate }) {
+export default function App() {
+  const [quotes, setQuotes] = useState(null);
+  const [todaysDate, setTodaysDate] = useState(null);
+  // const todaysDate = new Date().toLocaleDateString('en-CA');
   const [isInstructionsModalVisible, setIsInstructionsModalVisible] = useLocalStorage(
     "isInstructionsModalVisible",
     true
@@ -26,10 +30,26 @@ export default function App({ quotes, todaysDate }) {
   const [isStatsModalVisible, setIsStatsModalVisible] = useState(false);
   const [currentRound, setCurrentRound] = useState(1);
   const [alreadyPlayedToday] = useState(JSON.parse(scores).filter((score) => score.date === todaysDate).length > 0);
+  const [gameData, setGameData] = useState(null);
 
-  const [gameData, setGameData] = useState(
-    quotes.map((q) => ({ quote: q.quote, character: q.qcharacter, guess: null }))
-  );
+  useEffect(() => {
+    async function getQuotes() {
+      // const res = await fetch(`${URL}/api/quotes`, { cache: "no-store" }); // gets from live
+      // const res = await fetch(`http://localhost:3000/api/quotes`, { cache: "no-store" }); // this works (locally)
+      const res = await fetch(`https://anecdohtes-preview.vercel.app/api/quotes`, { cache: "no-store" });
+
+      if (!res.ok) {
+        throw new Error("Failed to fetch quotes from API");
+      }
+
+      const data = await res.json();
+      setQuotes(data.quotes);
+      setTodaysDate(data.quotes[0].qdate);
+      setGameData(data.quotes.map((q) => ({ quote: q.quote, character: q.qcharacter, guess: null })));
+    }
+
+    getQuotes();
+  }, []);
 
   function handleSubmit(selectedCharacter) {
     setGameData((oldState) => {
@@ -64,6 +84,10 @@ export default function App({ quotes, todaysDate }) {
 
   function handleClickShowStats() {
     setIsStatsModalVisible(true);
+  }
+
+  if (!quotes || !gameData) {
+    return "Loading...";
   }
 
   const score = gameData.filter((round) => round.guess === round.character).length;
