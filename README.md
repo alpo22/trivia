@@ -16,6 +16,8 @@ x share on https://nohomers.net/
 
 - share on http://www.lardlad.com/
 - add ads
+- get staging branch working on vercel
+- use PlanetScale for free
 
 ## TODO v2:
 
