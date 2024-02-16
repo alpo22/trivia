@@ -13,14 +13,12 @@ import Input from "./components/Input";
 import InstructionsModal from "./components/InstructionsModal";
 import ResultsModal from "./components/ResultsModal";
 import StatsModal from "./components/StatsModal";
-import { URL } from "./utils/constants";
 import "./App.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function App() {
   const [quotes, setQuotes] = useState(null);
   const [todaysDate, setTodaysDate] = useState(null);
-  // const todaysDate = new Date().toLocaleDateString('en-CA');
   const [isInstructionsModalVisible, setIsInstructionsModalVisible] = useLocalStorage(
     "isInstructionsModalVisible",
     true
@@ -34,12 +32,6 @@ export default function App() {
 
   useEffect(() => {
     async function getQuotes() {
-      // const res = await fetch(`${URL}/api/quotes`, { cache: "no-store" }); // gets from live
-      // const res = await fetch(`http://localhost:3000/api/quotes`, { cache: "no-store" }); // this works (locally)
-      // const res = await fetch(`https://anecdohtes-preview.vercel.app/api/quotes`, { cache: "no-store" }); // this works
-
-      // so how get vercel to switch which URL using?
-      // relative URL
       const res = await fetch(`/api/quotes`, { cache: "no-store" });
 
       if (!res.ok) {
