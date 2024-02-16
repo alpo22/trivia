@@ -36,7 +36,11 @@ export default function App() {
     async function getQuotes() {
       // const res = await fetch(`${URL}/api/quotes`, { cache: "no-store" }); // gets from live
       // const res = await fetch(`http://localhost:3000/api/quotes`, { cache: "no-store" }); // this works (locally)
-      const res = await fetch(`https://anecdohtes-preview.vercel.app/api/quotes`, { cache: "no-store" });
+      // const res = await fetch(`https://anecdohtes-preview.vercel.app/api/quotes`, { cache: "no-store" }); // this works
+
+      // so how get vercel to switch which URL using?
+      // relative URL
+      const res = await fetch(`/api/quotes`, { cache: "no-store" });
 
       if (!res.ok) {
         throw new Error("Failed to fetch quotes from API");
