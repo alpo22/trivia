@@ -27,7 +27,7 @@ export default function App() {
   const [isResultsModalVisible, setIsResultsModalVisible] = useState(false);
   const [isStatsModalVisible, setIsStatsModalVisible] = useState(false);
   const [currentRound, setCurrentRound] = useState(1);
-  const [alreadyPlayedToday] = useState(JSON.parse(scores).filter((score) => score.date === todaysDate).length > 0);
+  const [alreadyPlayedToday, setAlreadyPlayedToday] = useState(null);
   const [gameData, setGameData] = useState(null);
 
   useEffect(() => {
@@ -42,6 +42,7 @@ export default function App() {
       setQuotes(data.quotes);
       setTodaysDate(data.quotes[0].qdate);
       setGameData(data.quotes.map((q) => ({ quote: q.quote, character: q.qcharacter, guess: null })));
+      setAlreadyPlayedToday(JSON.parse(scores).filter((score) => score.date === todaysDate).length > 0);
     }
 
     getQuotes();
@@ -82,7 +83,7 @@ export default function App() {
     setIsStatsModalVisible(true);
   }
 
-  if (!quotes || !gameData) {
+  if (!quotes || !gameData || alreadyPlayedToday === null) {
     return "Loading...";
   }
 
