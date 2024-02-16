@@ -28,7 +28,7 @@ export default function App({ quotes, todaysDate }) {
   const [alreadyPlayedToday] = useState(JSON.parse(scores).filter((score) => score.date === todaysDate).length > 0);
 
   const [gameData, setGameData] = useState(
-    quotes.map((q) => ({ quote: q.quote, character: q.character, guess: null }))
+    quotes.map((q) => ({ quote: q.quote, character: q.qcharacter, guess: null }))
   );
 
   function handleSubmit(selectedCharacter) {
