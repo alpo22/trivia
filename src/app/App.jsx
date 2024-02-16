@@ -40,9 +40,11 @@ export default function App() {
 
       const data = await res.json();
       setQuotes(data.quotes);
-      setTodaysDate(data.quotes[0].qdate);
+
+      const _todaysDate = data.quotes[0].qdate;
+      setTodaysDate(_todaysDate);
       setGameData(data.quotes.map((q) => ({ quote: q.quote, character: q.qcharacter, guess: null })));
-      setAlreadyPlayedToday(JSON.parse(scores).filter((score) => score.date === todaysDate).length > 0);
+      setAlreadyPlayedToday(JSON.parse(scores).filter((score) => score.date === _todaysDate).length > 0);
     }
 
     getQuotes();
