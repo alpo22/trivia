@@ -5,6 +5,7 @@ import "dotenv/config";
 import { connect } from "@planetscale/database";
 
 export default async function handler(request, response) {
+  console.log(888888888);
   // const client = await db.connect();
 
   // const quotes =
@@ -22,5 +23,5 @@ export default async function handler(request, response) {
     "SELECT id, qdate, quote, qcharacter FROM quotes WHERE qdate = CURDATE() ORDER BY id ASC"
   );
 
-  console.log(results);
+  return { quotes: [] };
 }
