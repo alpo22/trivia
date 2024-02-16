@@ -10,7 +10,12 @@ AnecDOH!tes is a fun little Simpsons Quote trivia game, inspired by games like [
 
 ## TODO:
 
-- share on Reddit
+x share on Reddit
+x share on FaceBook
+x share on https://nohomers.net/
+
+- share on http://www.lardlad.com/
+- add ads
 
 ## TODO v2:
 
