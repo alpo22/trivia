@@ -55,6 +55,7 @@ Acess PlanetScale's database via PlanetScale, or SequelAce.
 - you can cheat and look at the API response to see the answers...
 - TypeScript
 - have a 'download' button (SPA)
+- When share, do like Wordle and indicate which were right and which were wrong
 
 ## Resources
 
