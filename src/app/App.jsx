@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocalStorage } from "@uidotdev/usehooks";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
@@ -16,7 +16,9 @@ import StatsModal from "./components/StatsModal";
 import "./App.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-export default function App({ quotes, todaysDate }) {
+export default function App() {
+  const [quotes, setQuotes] = useState(null);
+  const [todaysDate, setTodaysDate] = useState(null);
   const [isInstructionsModalVisible, setIsInstructionsModalVisible] = useLocalStorage(
     "isInstructionsModalVisible",
     true
@@ -25,11 +27,28 @@ export default function App({ quotes, todaysDate }) {
   const [isResultsModalVisible, setIsResultsModalVisible] = useState(false);
   const [isStatsModalVisible, setIsStatsModalVisible] = useState(false);
   const [currentRound, setCurrentRound] = useState(1);
-  const [alreadyPlayedToday] = useState(JSON.parse(scores).filter((score) => score.date === todaysDate).length > 0);
+  const [alreadyPlayedToday, setAlreadyPlayedToday] = useState(null);
+  const [gameData, setGameData] = useState(null);
 
-  const [gameData, setGameData] = useState(
-    quotes.map((q) => ({ quote: q.quote, character: q.character, guess: null }))
-  );
+  useEffect(() => {
+    async function getQuotes() {
+      const res = await fetch(`/api/quotes`, { cache: "no-store" });
+
+      if (!res.ok) {
+        throw new Error("Failed to fetch quotes from API");
+      }
+
+      const data = await res.json();
+      setQuotes(data.quotes);
+
+      const _todaysDate = data.quotes[0].qdate;
+      setTodaysDate(_todaysDate);
+      setGameData(data.quotes.map((q) => ({ quote: q.quote, character: q.qcharacter, guess: null })));
+      setAlreadyPlayedToday(JSON.parse(scores).filter((score) => score.date === _todaysDate).length > 0);
+    }
+
+    getQuotes();
+  }, []);
 
   function handleSubmit(selectedCharacter) {
     setGameData((oldState) => {
@@ -64,6 +83,10 @@ export default function App({ quotes, todaysDate }) {
 
   function handleClickShowStats() {
     setIsStatsModalVisible(true);
+  }
+
+  if (!quotes || !gameData || alreadyPlayedToday === null) {
+    return "Loading...";
   }
 
   const score = gameData.filter((round) => round.guess === round.character).length;
