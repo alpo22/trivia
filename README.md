@@ -14,23 +14,18 @@ At it's peak, it had 900 players per day, but the more regular number was 100.
 
 `npm run dev`
 
-## Deploying
+This uses the `main production` database.
 
-Push to main and Vercel deploys the lates.
+## Deployment
+
+The `main` branch deploys to the `production` branch (and URL) of Vercel (https://www.anecdohtes.com).
+
+The `preview` branch deploys to the `preview` branch (and URL) of Vercel (https://anecdohtes-preview.vercel.app/).
 
 ## TODO:
 
 - move database to Turso
 - make it choose random quotes
-
-- on start, bring title forward (like does on the show), then make modal appear
-- slide next question in from right
-- can go back to previous questions
-- could show most guessed incorrect answer
-- use different state management
-- the images at the end need to pre-load
-- when click 'share' on last screen, copy should change to 'copied'
-- show error/warning when submit without making a choice
 
 # Acknowledgements
 

@@ -11,6 +11,7 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@planetscale/database": "^1.16.0",
     "@uidotdev/usehooks": "^2.4.1",
     "@vercel/analytics": "^1.1.1",
     "@vercel/postgres": "^0.5.1",
