@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useLocalStorage } from "@uidotdev/usehooks";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
+import BannerMessage from "./components/BannerMessage";
 import Nav from "./components/Nav";
 import Heading from "./components/Heading";
 import AlreadyPlayedToday from "./components/AlreadyPlayedToday";
@@ -72,6 +73,7 @@ export default function App({ quotes, todaysDate }) {
   return (
     <div className="app-wrapper">
       <InstructionsModal isVisible={isInstructionsModalVisible} onClose={handleCloseInstructionsModal} />
+      <BannerMessage />
       <Nav onClickShowStats={handleClickShowStats} />
       <Heading />
       {alreadyPlayedToday ? (
