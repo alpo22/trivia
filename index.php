@@ -20,6 +20,9 @@ $pdoConnection = new PDO(
   ]
 );
 
+var_dump($pdoConnection);
+die;
+
 $resultArray  = [];
 $sql          = "SELECT * FROM quotes WHERE qdate = DAY(CURDATE()) ORDER BY id ASC";
 $statement    = $pdoConnection->prepare($sql);
