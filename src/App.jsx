@@ -29,7 +29,7 @@ export default function App() {
 
   useEffect(() => {
     async function getQuotes() {
-      const res = await fetch(`/api/quotes`);
+      const res = await fetch(`https://anecdohtes-back-end-app-gsjum.ondigitalocean.app/`);
 
       if (!res.ok) {
         throw new Error("Failed to fetch quotes from API");
