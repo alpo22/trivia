@@ -92,7 +92,7 @@ export default function App() {
   return (
     <div className="app-wrapper">
       <InstructionsModal isVisible={isInstructionsModalVisible} onClose={handleCloseInstructionsModal} />
-      <BannerMessage />
+      {/* <BannerMessage /> */}
       <Nav onClickShowStats={handleClickShowStats} />
       <Heading />
       {alreadyPlayedToday ? (
