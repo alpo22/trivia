@@ -38,7 +38,7 @@ export default function App() {
       const data = await res.json();
       setQuotes(data);
 
-      const _todaysDate = data[0].qdate;
+      const _todaysDate = new Date().toLocaleDateString("en-CA");
       setTodaysDate(_todaysDate);
       setGameData(data.map((q) => ({ quote: q.quote, character: q.qcharacter, guess: null })));
       setAlreadyPlayedToday(JSON.parse(scores).filter((score) => score.date === _todaysDate).length > 0);
