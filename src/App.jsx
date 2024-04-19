@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLocalStorage } from "@uidotdev/usehooks";
-import BannerMessage from "./components/BannerMessage";
+// import BannerMessage from "./components/BannerMessage";
 import Nav from "./components/Nav";
 import Heading from "./components/Heading";
 import AlreadyPlayedToday from "./components/AlreadyPlayedToday";
