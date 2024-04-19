@@ -1,9 +1,5 @@
-"use client";
-
 import { useEffect, useState } from "react";
 import { useLocalStorage } from "@uidotdev/usehooks";
-import { Analytics } from "@vercel/analytics/react";
-import { SpeedInsights } from "@vercel/speed-insights/react";
 import BannerMessage from "./components/BannerMessage";
 import Nav from "./components/Nav";
 import Heading from "./components/Heading";
@@ -33,7 +29,7 @@ export default function App() {
 
   useEffect(() => {
     async function getQuotes() {
-      const res = await fetch(`/api/quotes`, { cache: "no-store" });
+      const res = await fetch(`/api/quotes`);
 
       if (!res.ok) {
         throw new Error("Failed to fetch quotes from API");
@@ -141,8 +137,6 @@ export default function App() {
         }}
         scores={JSON.parse(scores)}
       />
-      <Analytics />
-      <SpeedInsights />
     </div>
   );
 }

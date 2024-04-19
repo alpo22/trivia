@@ -4,8 +4,8 @@ At it's peak, it had 900 players per day, but the more regular number was 100.
 
 ## Stack
 
-- Next.js + React
-- Vercel + GitHub + PlanetScale
+- PHP + React
+- DigitalOcean App Platform + GitHub
 - StoryBook
 - LocalStorage
 - NameCheap.com
@@ -21,11 +21,6 @@ This uses the `main production` database.
 The `main` branch deploys to the `production` branch (and URL) of Vercel (https://www.anecdohtes.com).
 
 The `preview` branch deploys to the `preview` branch (and URL) of Vercel (https://anecdohtes-preview.vercel.app/).
-
-## TODO:
-
-- move database to Turso
-- make it choose random quotes
 
 # Acknowledgements
 
