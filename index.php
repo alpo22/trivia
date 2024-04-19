@@ -1,4 +1,7 @@
 <?php
+echo "hello";
+die;
+
 // To test if this works, go to /api/quotes
 
 $pdoConnection = new PDO(
