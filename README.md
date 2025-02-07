@@ -9,7 +9,7 @@ It used to be on Vercel, but was too expensive, so now lives on alwaysdata.net f
 - PHP + React
 - StoryBook
 - LocalStorage
-- NameCheap.com
+- NameCheap.com 
 
 ## Running locally
 
@@ -24,3 +24,5 @@ This uses the `main production` database.
 # Acknowledgements
 
 Fonts come from Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.
+
+![welcome](https://github.com/user-attachments/assets/2a6f454c-b8da-43eb-9c30-32c0672399ce)
