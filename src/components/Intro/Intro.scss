@@ -3,12 +3,34 @@
     font-size: 0px;
   }
   to {
-    font-size: 1500px;
+    font-size: 1000px;
   }
 }
 
-.intro .heading h1 {
-  font-size: 0px;
-  margin-top: 120px;
-  animation: grow 14s ease-in-out forwards 1s;
+@keyframes fade {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.intro {
+  overflow: hidden;
+  z-index: 2;
+
+  .intro-heading-wrapper {
+    padding-top: 150px;
+    text-align: center;
+
+    position: relative;
+    z-index: 2;
+  }
+
+  .heading h1 {
+    font-size: 0px;
+    margin-top: 120px;
+    animation: grow 7s ease-in-out forwards, fade 4s ease-in-out forwards 3s;
+  }
 }
