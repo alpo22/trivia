@@ -7,7 +7,7 @@
   }
 }
 
-@keyframes fade {
+@keyframes fadeout {
   from {
     opacity: 1;
   }
@@ -28,6 +28,8 @@
 
   .heading h1 {
     font-size: 0;
-    animation: grow 12s ease-in-out forwards, fade 2s ease-in-out forwards 3s;
+    animation: grow 12s ease-in-out forwards;
   }
+
+  animation: fadeout 3s ease-in-out forwards 2s;
 }

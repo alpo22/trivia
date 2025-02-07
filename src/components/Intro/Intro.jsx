@@ -12,9 +12,9 @@ export default function Intro({ afterAnimation }) {
   }, []);
 
   return (
-    <div className="intro">
+    <div className="intro" onAnimationEnd={afterAnimation}>
       <div className="intro-heading-wrapper">
-        <Heading onAnimationEnd={afterAnimation} />
+        <Heading />
       </div>
       <div className="cloud cloud1" />
       <div className="cloud cloud2" />
