@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import { useLocalStorage } from "@uidotdev/usehooks";
 import GameContent from "./components/GameContent";
 import AlreadyPlayedToday from "./components/AlreadyPlayedToday";
@@ -18,6 +18,7 @@ function AppContent() {
   const [currentRound, setCurrentRound] = useState(1);
   const [alreadyPlayedToday, setAlreadyPlayedToday] = useState(null);
   const [gameData, setGameData] = useState(null);
+  const location = useLocation();
 
   useEffect(() => {
     async function getQuotes() {
@@ -46,10 +47,10 @@ function AppContent() {
   }, [hasSeenInstructions]);
 
   useEffect(() => {
-    if (alreadyPlayedToday) {
+    if (alreadyPlayedToday && location.pathname == "/") {
       navigate("/already-played");
     }
-  }, [alreadyPlayedToday]);
+  }, [location, alreadyPlayedToday]);
 
   function handleSubmit(selectedCharacter) {
     setGameData((oldState) => {
