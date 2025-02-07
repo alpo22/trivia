@@ -17,20 +17,17 @@
 }
 
 .intro {
-  overflow: hidden;
-  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
   .intro-heading-wrapper {
-    padding-top: 150px;
     text-align: center;
-
-    position: relative;
     z-index: 2;
   }
 
   .heading h1 {
-    font-size: 0px;
-    margin-top: 120px;
-    animation: grow 7s ease-in-out forwards, fade 4s ease-in-out forwards 3s;
+    font-size: 0;
+    animation: grow 12s ease-in-out forwards, fade 2s ease-in-out forwards 3s;
   }
 }
