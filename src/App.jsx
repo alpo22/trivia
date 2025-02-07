@@ -91,9 +91,21 @@ function AppContent() {
         <Route
           path="/"
           element={
+            <InstructionsModal
+              onClose={() => {
+                setHasSeenInstructions(true);
+                navigate("/intro");
+              }}
+            />
+          }
+        />
+
+        <Route
+          path="/intro"
+          element={
             <Intro
               afterAnimation={() => {
-                navigate("/instructions");
+                navigate("/game");
               }}
             />
           }
@@ -112,17 +124,7 @@ function AppContent() {
             />
           }
         />
-        <Route
-          path="/instructions"
-          element={
-            <InstructionsModal
-              onClose={() => {
-                setHasSeenInstructions(true);
-                navigate("/game");
-              }}
-            />
-          }
-        />
+
         <Route
           path="/already-played"
           element={<AlreadyPlayedToday handleClickShowStats={() => navigate("/stats")} />}
