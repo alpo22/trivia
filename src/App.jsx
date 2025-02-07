@@ -29,18 +29,18 @@ export default function App() {
 
   useEffect(() => {
     async function getQuotes() {
-      const res = await fetch(`/api/quotes`);
+      const res = await fetch(`/api/quotes.php`);
 
       if (!res.ok) {
         throw new Error("Failed to fetch quotes from API");
       }
 
-      const data = await res.json();
-      setQuotes(data.quotes);
+      const quotes = await res.json();
+      setQuotes(quotes);
 
-      const _todaysDate = data.quotes[0].qdate;
+      const _todaysDate = quotes[0].qdate;
       setTodaysDate(_todaysDate);
-      setGameData(data.quotes.map((q) => ({ quote: q.quote, character: q.qcharacter, guess: null })));
+      setGameData(quotes.map((q) => ({ quote: q.quote, character: q.character, guess: null })));
       setAlreadyPlayedToday(JSON.parse(scores).filter((score) => score.date === _todaysDate).length > 0);
     }
 

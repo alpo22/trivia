@@ -1,25 +1,21 @@
 <?php
-// To test if this works, go to /api/quotes
+// To test if this works, go to /api/quotes.php
+require 'env.php';
 
-$pdoConnection = new PDO(
-  'mysql:dbname=defaultdb;host=db-mysql-test-cluster-do-user-16389943-0.c.db.ondigitalocean.com;port=3306;charset=utf8',
-  'doadmin',
-  'AVNS_I5GwOL_5RU1LoeZtvMm',
-  [
-    PDO::ATTR_TIMEOUT                  => 15,
-    PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => true,
-  ]
-);
-
+$myDbLink     = mysqli_connect($_ENV['DB_HOST'], $_ENV['DB_USERNAME'], $_ENV['DB_PASSWORD'], $_ENV['DB_NAME']) or die('Database error: ' . mysqli_error($myDbLink));
 $resultArray  = [];
-$sql          = "SELECT * FROM quotes WHERE qdate = DAY(CURDATE()) ORDER BY id ASC";
-$statement    = $pdoConnection->prepare($sql);
-$statement->execute();
+$q            = "SELECT * FROM quotes WHERE qdate = '2025-02-07' ORDER BY id ASC";
 
-if ($statement->rowCount()) {
-  while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
-    array_push($resultArray, $row);
+if ($result = $myDbLink->query($q)) {
+  while ($row = $result->fetch_assoc()) {
+    $resultArray[] = [
+      'qdate'        => $row['qdate'],
+      'quote'        => $row['quote'],
+      'character'    => $row['character'],
+    ];
   }
+
+  echo json_encode($resultArray);
 }
 
-return $resultArray;
+return [];
