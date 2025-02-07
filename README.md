@@ -25,4 +25,5 @@ This uses the `main production` database.
 
 Fonts come from Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.
 
-![welcome](https://github.com/user-attachments/assets/2a6f454c-b8da-43eb-9c30-32c0672399ce)
+https://github.com/user-attachments/assets/8127392d-c770-4072-97ea-9837ef3ec4ef
+
