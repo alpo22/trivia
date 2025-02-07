@@ -43,7 +43,7 @@ function AppContent() {
 
   useEffect(() => {
     if (!hasSeenInstructions) {
-      navigate("/intro");
+      navigate("/");
     }
   }, [hasSeenInstructions]);
 
