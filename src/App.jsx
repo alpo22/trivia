@@ -4,6 +4,7 @@ import { useLocalStorage } from "@uidotdev/usehooks";
 import GameContent from "./components/GameContent";
 import AlreadyPlayedToday from "./components/AlreadyPlayedToday";
 import InstructionsModal from "./components/InstructionsModal";
+import Intro from "./components/Intro";
 import ResultsModal from "./components/ResultsModal";
 import StatsModal from "./components/StatsModal";
 import "./App.scss";
@@ -90,6 +91,16 @@ function AppContent() {
         <Route
           path="/"
           element={
+            <Intro
+              afterAnimation={() => {
+                navigate("/instructions");
+              }}
+            />
+          }
+        />
+        <Route
+          path="/game"
+          element={
             <GameContent
               quotes={quotes}
               gameData={gameData}
@@ -107,7 +118,7 @@ function AppContent() {
             <InstructionsModal
               onClose={() => {
                 setHasSeenInstructions(true);
-                navigate("/");
+                navigate("/game");
               }}
             />
           }
@@ -116,8 +127,8 @@ function AppContent() {
           path="/already-played"
           element={<AlreadyPlayedToday handleClickShowStats={() => navigate("/stats")} />}
         />
-        <Route path="/results" element={<ResultsModal isVisible={true} score={score} />} />
-        <Route path="/stats" element={<StatsModal isVisible={true} scores={JSON.parse(scores)} />} />
+        <Route path="/results" element={<ResultsModal score={score} />} />
+        <Route path="/stats" element={<StatsModal scores={JSON.parse(scores)} />} />
       </Routes>
     </div>
   );

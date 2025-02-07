@@ -1,0 +1,14 @@
+@keyframes grow {
+  from {
+    font-size: 0px;
+  }
+  to {
+    font-size: 1500px;
+  }
+}
+
+.intro .heading h1 {
+  font-size: 0px;
+  margin-top: 120px;
+  animation: grow 14s ease-in-out forwards 1s;
+}
