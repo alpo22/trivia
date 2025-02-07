@@ -5,10 +5,10 @@ import "./Clouds.scss";
 import { useEffect } from "react";
 
 export default function Intro({ afterAnimation }) {
-  let audio = new Audio("/assets/angels.mp3");
+  const audio = new Audio("/assets/angels.mp3");
 
   useEffect(() => {
-    audio.play(); // it will only play if they interact first; i.e. click a "Play" button splash screen
+    audio.play();
   }, []);
 
   return (

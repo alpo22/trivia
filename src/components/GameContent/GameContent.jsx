@@ -5,6 +5,7 @@ import Heading from "../Heading";
 import Quote from "../Quote";
 import Rounds from "../Rounds";
 import Input from "../Input";
+import "./GameContent.scss";
 
 export default function GameContent({
   quotes,
@@ -20,7 +21,7 @@ export default function GameContent({
   }
 
   return (
-    <>
+    <div className="game-content">
       <BannerMessage />
       <Nav onClickShowStats={handleClickShowStats} />
       <Heading />
@@ -38,7 +39,7 @@ export default function GameContent({
           onSubmit={handleSubmit}
         />
       </footer>
-    </>
+    </div>
   );
 }
 
