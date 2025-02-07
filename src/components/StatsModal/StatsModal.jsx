@@ -1,10 +1,13 @@
 import Modal from "react-bootstrap/Modal";
+import { useNavigate } from "react-router-dom";
+import PropTypes from "prop-types";
 import Bar from "./Bar";
 import ShareButton from "../ShareButton";
 import { NUMBER_OF_ROUNDS } from "../../utils/constants";
 import "./StatsModal.scss";
 
-export default function StatsModal({ isVisible, onClose, scores }) {
+export default function StatsModal({ scores }) {
+  const navigate = useNavigate();
   let numberTimesScored0 = 0;
   let numberTimesScored1 = 0;
   let numberTimesScored2 = 0;
@@ -63,7 +66,7 @@ export default function StatsModal({ isVisible, onClose, scores }) {
   const overallScore = Math.round((questionsCorrect / totalQuestions) * 100);
 
   return (
-    <Modal show={isVisible} onHide={onClose} centered>
+    <Modal show onHide={() => navigate("/")} centered>
       <Modal.Header closeButton>
         <Modal.Title>Stats</Modal.Title>
       </Modal.Header>
@@ -90,3 +93,12 @@ export default function StatsModal({ isVisible, onClose, scores }) {
     </Modal>
   );
 }
+
+StatsModal.propTypes = {
+  scores: PropTypes.arrayOf(
+    PropTypes.shape({
+      date: PropTypes.string.isRequired,
+      score: PropTypes.number.isRequired,
+    })
+  ).isRequired,
+};

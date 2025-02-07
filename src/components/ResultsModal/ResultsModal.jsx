@@ -1,10 +1,13 @@
 import Modal from "react-bootstrap/Modal";
+import { useNavigate } from "react-router-dom";
+import PropTypes from "prop-types";
 import ShareButton from "../ShareButton";
 import ViewStatsButton from "../ViewStatsButton";
 import { NUMBER_OF_ROUNDS } from "../../utils/constants";
 import "./ResultsModal.scss";
 
-export default function ResultsModal({ isVisible, onClickViewMyStats, onClose, score }) {
+export default function ResultsModal({ score }) {
+  const navigate = useNavigate();
   let title;
   let path;
 
@@ -36,13 +39,13 @@ export default function ResultsModal({ isVisible, onClickViewMyStats, onClose, s
   }
 
   return (
-    <Modal show={isVisible} onHide={onClose} centered>
+    <Modal show onHide={() => navigate("/")} centered>
       <Modal.Header closeButton>
         <Modal.Title>{title}</Modal.Title>
       </Modal.Header>
       <Modal.Body className="results-modal-body">
         <div className="character-photo-wrapper">
-          <img src={path} widht="360px" height="280px" />
+          <img src={path} width="360px" height="280px" alt={title} />
         </div>
         <p />
         <p>
@@ -52,9 +55,13 @@ export default function ResultsModal({ isVisible, onClickViewMyStats, onClose, s
         </p>
         <div className="results-modal__buttons">
           <ShareButton copyText={`I got ${score}/${NUMBER_OF_ROUNDS} Simpsons Quotes correct`} />
-          <ViewStatsButton onClick={onClickViewMyStats} />
+          <ViewStatsButton onClick={() => navigate("/stats")} />
         </div>
       </Modal.Body>
     </Modal>
   );
 }
+
+ResultsModal.propTypes = {
+  score: PropTypes.number.isRequired,
+};

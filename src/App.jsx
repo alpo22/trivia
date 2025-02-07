@@ -1,28 +1,20 @@
 import { useEffect, useState } from "react";
+import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 import { useLocalStorage } from "@uidotdev/usehooks";
-import BannerMessage from "./components/BannerMessage";
-import Nav from "./components/Nav";
-import Heading from "./components/Heading";
+import GameContent from "./components/GameContent";
 import AlreadyPlayedToday from "./components/AlreadyPlayedToday";
-import Quote from "./components/Quote";
-import Rounds from "./components/Rounds";
-import Input from "./components/Input";
 import InstructionsModal from "./components/InstructionsModal";
 import ResultsModal from "./components/ResultsModal";
 import StatsModal from "./components/StatsModal";
 import "./App.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-export default function App() {
+function AppContent() {
+  const navigate = useNavigate();
   const [quotes, setQuotes] = useState(null);
   const [todaysDate, setTodaysDate] = useState(null);
-  const [isInstructionsModalVisible, setIsInstructionsModalVisible] = useLocalStorage(
-    "isInstructionsModalVisible",
-    true
-  );
+  const [hasSeenInstructions, setHasSeenInstructions] = useLocalStorage("hasSeenInstructions", false);
   const [scores, setScores] = useLocalStorage("scores", JSON.stringify([]));
-  const [isResultsModalVisible, setIsResultsModalVisible] = useState(false);
-  const [isStatsModalVisible, setIsStatsModalVisible] = useState(false);
   const [currentRound, setCurrentRound] = useState(1);
   const [alreadyPlayedToday, setAlreadyPlayedToday] = useState(null);
   const [gameData, setGameData] = useState(null);
@@ -47,6 +39,18 @@ export default function App() {
     getQuotes();
   }, []);
 
+  useEffect(() => {
+    if (!hasSeenInstructions) {
+      navigate("/instructions");
+    }
+  }, [hasSeenInstructions]);
+
+  useEffect(() => {
+    if (alreadyPlayedToday) {
+      navigate("/already-played");
+    }
+  }, [alreadyPlayedToday]);
+
   function handleSubmit(selectedCharacter) {
     setGameData((oldState) => {
       const newState = [...oldState];
@@ -65,78 +69,63 @@ export default function App() {
   }
 
   function handleContinue() {
-    if (currentRound < gameData.length) {
-      setCurrentRound((oldState) => {
-        return oldState + 1;
-      });
+    if (currentRound < gameData?.length) {
+      setCurrentRound((oldState) => oldState + 1);
     } else {
-      setIsResultsModalVisible(true);
+      navigate("/results");
     }
   }
 
-  function handleCloseInstructionsModal() {
-    setIsInstructionsModalVisible(false);
-  }
-
-  function handleClickShowStats() {
-    setIsStatsModalVisible(true);
-  }
+  const score = gameData?.filter((round) => round.guess === round.character).length || 0;
+  const numberOfGuesses = gameData?.filter((round) => round.guess).length || 0;
 
   if (!quotes || !gameData || alreadyPlayedToday === null) {
     return "Loading...";
   }
 
-  const score = gameData.filter((round) => round.guess === round.character).length;
-  const numberOfGuesses = gameData.filter((round) => round.guess).length;
-
   return (
     <div className="app-wrapper">
-      <InstructionsModal isVisible={isInstructionsModalVisible} onClose={handleCloseInstructionsModal} />
-      <BannerMessage />
-      <Nav onClickShowStats={handleClickShowStats} />
-      <Heading />
-      {alreadyPlayedToday ? (
-        <AlreadyPlayedToday
-          onClickViewMyStats={() => {
-            setIsStatsModalVisible(true);
-          }}
-        />
-      ) : (
-        <>
-          <Quote
-            character={gameData[currentRound - 1].character}
-            guess={gameData[currentRound - 1].guess}
-            text={gameData[currentRound - 1].quote}
-          />
-          <footer>
-            <Rounds currentRound={currentRound} gameData={gameData} />
-            <Input
-              isDone={gameData.length === numberOfGuesses}
-              isOnActiveRound={currentRound === numberOfGuesses + 1}
-              onContinue={handleContinue}
-              onSubmit={handleSubmit}
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <GameContent
+              quotes={quotes}
+              gameData={gameData}
+              currentRound={currentRound}
+              numberOfGuesses={numberOfGuesses}
+              handleSubmit={handleSubmit}
+              handleContinue={handleContinue}
+              handleClickShowStats={() => navigate("/stats")}
             />
-          </footer>
-        </>
-      )}
-      <ResultsModal
-        isVisible={isResultsModalVisible}
-        onClose={() => {
-          setIsResultsModalVisible(false);
-        }}
-        onClickViewMyStats={() => {
-          setIsResultsModalVisible(false);
-          setIsStatsModalVisible(true);
-        }}
-        score={score}
-      />
-      <StatsModal
-        isVisible={isStatsModalVisible}
-        onClose={() => {
-          setIsStatsModalVisible(false);
-        }}
-        scores={JSON.parse(scores)}
-      />
+          }
+        />
+        <Route
+          path="/instructions"
+          element={
+            <InstructionsModal
+              onClose={() => {
+                setHasSeenInstructions(true);
+                navigate("/");
+              }}
+            />
+          }
+        />
+        <Route
+          path="/already-played"
+          element={<AlreadyPlayedToday handleClickShowStats={() => navigate("/stats")} />}
+        />
+        <Route path="/results" element={<ResultsModal isVisible={true} score={score} />} />
+        <Route path="/stats" element={<StatsModal isVisible={true} scores={JSON.parse(scores)} />} />
+      </Routes>
     </div>
+  );
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <AppContent />
+    </BrowserRouter>
   );
 }
