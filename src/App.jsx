@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import { useLocalStorage } from "@uidotdev/usehooks";
+import { useZustandStore } from "./hooks/useZustandStore";
+import { useShallow } from "zustand/react/shallow";
 import GameContent from "./components/GameContent";
 import AlreadyPlayedToday from "./components/AlreadyPlayedToday";
 import InstructionsModal from "./components/InstructionsModal";
@@ -12,14 +14,22 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 function AppContent() {
   const navigate = useNavigate();
-  const [quotes, setQuotes] = useState(null);
-  const [todaysDate, setTodaysDate] = useState(null);
+  const todaysDate = new Date().toISOString().split("T")[0];
   const [hasSeenInstructions, setHasSeenInstructions] = useLocalStorage("hasSeenInstructions", false);
   const [scores, setScores] = useLocalStorage("scores", JSON.stringify([]));
-  const [currentRound, setCurrentRound] = useState(1);
   const [alreadyPlayedToday, setAlreadyPlayedToday] = useState(null);
-  const [gameData, setGameData] = useState(null);
   const location = useLocation();
+
+  const { quotes, setQuotes, setGuess, getCurrentScore, currentRound, increaseRound } = useZustandStore(
+    useShallow((state) => ({
+      quotes: state.quotes,
+      setQuotes: state.setQuotes,
+      setGuess: state.setGuess,
+      getCurrentScore: state.getCurrentScore,
+      currentRound: state.currentRound,
+      increaseRound: state.increaseRound,
+    }))
+  );
 
   useEffect(() => {
     async function getQuotes() {
@@ -32,10 +42,7 @@ function AppContent() {
       const quotes = await res.json();
       setQuotes(quotes);
 
-      const _todaysDate = quotes[0].qdate;
-      setTodaysDate(_todaysDate);
-      setGameData(quotes.map((q) => ({ quote: q.quote, character: q.character, guess: null })));
-      setAlreadyPlayedToday(JSON.parse(scores).filter((score) => score.date === _todaysDate).length > 0);
+      setAlreadyPlayedToday(JSON.parse(scores).filter((score) => score.date === todaysDate).length > 0);
     }
 
     getQuotes();
@@ -48,22 +55,27 @@ function AppContent() {
   }, [hasSeenInstructions]);
 
   useEffect(() => {
-    if (alreadyPlayedToday && location.pathname == "/") {
-      navigate("/already-played");
+    switch (location.pathname) {
+      case "/":
+      case "/game":
+        if (alreadyPlayedToday) {
+          navigate("/already-played");
+        }
+        break;
+      case "/already-played":
+        if (!alreadyPlayedToday) {
+          navigate("/game");
+        }
+        break;
     }
-  }, [location, alreadyPlayedToday]);
+  }, [location.pathname, navigate]);
 
   function handleSubmit(selectedCharacter) {
-    setGameData((oldState) => {
-      const newState = [...oldState];
-      newState[currentRound - 1].guess = selectedCharacter;
-      return newState;
-    });
+    setGuess(selectedCharacter);
 
     function recordScoreToLocalStorage() {
-      const currentScore = gameData.filter((round) => round.character === round.guess).length;
       const newScores = JSON.parse(scores).filter((score) => score.date !== todaysDate);
-      newScores.push({ date: todaysDate, score: currentScore });
+      newScores.push({ date: todaysDate, score: getCurrentScore() });
       setScores(JSON.stringify(newScores));
     }
 
@@ -71,17 +83,15 @@ function AppContent() {
   }
 
   function handleContinue() {
-    if (currentRound < gameData?.length) {
-      setCurrentRound((oldState) => oldState + 1);
+    if (currentRound < quotes?.length) {
+      increaseRound();
     } else {
+      setAlreadyPlayedToday(true);
       navigate("/results");
     }
   }
 
-  const score = gameData?.filter((round) => round.guess === round.character).length || 0;
-  const numberOfGuesses = gameData?.filter((round) => round.guess).length || 0;
-
-  if (!quotes || !gameData || alreadyPlayedToday === null) {
+  if (!quotes || alreadyPlayedToday === null) {
     return "Loading...";
   }
 
@@ -113,22 +123,17 @@ function AppContent() {
           path="/game"
           element={
             <GameContent
-              quotes={quotes}
-              gameData={gameData}
-              currentRound={currentRound}
-              numberOfGuesses={numberOfGuesses}
               handleSubmit={handleSubmit}
               handleContinue={handleContinue}
               handleClickShowStats={() => navigate("/stats")}
             />
           }
         />
-
         <Route
           path="/already-played"
           element={<AlreadyPlayedToday handleClickShowStats={() => navigate("/stats")} />}
         />
-        <Route path="/results" element={<ResultsModal score={score} />} />
+        <Route path="/results" element={<ResultsModal score={getCurrentScore()} />} />
         <Route path="/stats" element={<StatsModal scores={JSON.parse(scores)} />} />
       </Routes>
     </div>

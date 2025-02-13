@@ -1,40 +1,36 @@
 import PropTypes from "prop-types";
+import { useZustandStore } from "../../hooks/useZustandStore";
 import BannerMessage from "../BannerMessage";
 import Nav from "../Nav";
 import Heading from "../Heading";
 import Quote from "../Quote";
 import Rounds from "../Rounds";
 import Input from "../Input";
-import "./GameContent.scss";
 
-export default function GameContent({
-  quotes,
-  gameData,
-  currentRound,
-  numberOfGuesses,
-  handleSubmit,
-  handleContinue,
-  handleClickShowStats,
-}) {
-  if (!quotes || !gameData) {
+export default function GameContent({ handleSubmit, handleContinue, handleClickShowStats }) {
+  const guesses = useZustandStore((state) => state.guesses);
+  const quotes = useZustandStore((state) => state.quotes);
+  const currentRound = useZustandStore((state) => state.currentRound);
+
+  if (!quotes) {
     return "Loading...";
   }
 
   return (
-    <div className="game-content">
+    <div className="inner-content">
       <BannerMessage />
       <Nav onClickShowStats={handleClickShowStats} />
       <Heading />
       <Quote
-        character={gameData[currentRound - 1].character}
-        guess={gameData[currentRound - 1].guess}
-        text={gameData[currentRound - 1].quote}
+        character={quotes[currentRound - 1].character}
+        guess={guesses[currentRound - 1]}
+        text={quotes[currentRound - 1].quote}
       />
       <footer>
-        <Rounds currentRound={currentRound} gameData={gameData} />
+        <Rounds />
         <Input
-          isDone={gameData.length === numberOfGuesses}
-          isOnActiveRound={currentRound === numberOfGuesses + 1}
+          isDone={quotes.length === guesses.length}
+          isOnActiveRound={currentRound === guesses.length + 1}
           onContinue={handleContinue}
           onSubmit={handleSubmit}
         />
@@ -44,22 +40,6 @@ export default function GameContent({
 }
 
 GameContent.propTypes = {
-  quotes: PropTypes.arrayOf(
-    PropTypes.shape({
-      quote: PropTypes.string,
-      character: PropTypes.string,
-      qdate: PropTypes.string,
-    })
-  ),
-  gameData: PropTypes.arrayOf(
-    PropTypes.shape({
-      quote: PropTypes.string,
-      character: PropTypes.string,
-      guess: PropTypes.string,
-    })
-  ),
-  currentRound: PropTypes.number.isRequired,
-  numberOfGuesses: PropTypes.number.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   handleContinue: PropTypes.func.isRequired,
   handleClickShowStats: PropTypes.func.isRequired,

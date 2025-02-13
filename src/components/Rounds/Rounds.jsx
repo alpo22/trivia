@@ -1,11 +1,16 @@
+import { useZustandStore } from "../../hooks/useZustandStore";
 import CheckSvg from "./CheckSvg";
 import Xsvg from "./Xsvg";
 import "./Rounds.scss";
 
-export default function Rounds({ currentRound, gameData }) {
+export default function Rounds() {
+  const guesses = useZustandStore((state) => state.guesses);
+  const quotes = useZustandStore((state) => state.quotes);
+  const currentRound = useZustandStore((state) => state.currentRound);
+
   return (
     <ul className="rounds">
-      {gameData.map((roundData, index) => {
+      {quotes.map((_, index) => {
         let cn = "";
         let Content = null;
 
@@ -13,9 +18,9 @@ export default function Rounds({ currentRound, gameData }) {
           cn += `active `;
         }
 
-        if (roundData.guess === null) {
+        if (guesses[index] === undefined) {
           // do nothing
-        } else if (roundData.guess === roundData.character) {
+        } else if (guesses[index] === quotes[index].character) {
           cn += `green`;
           Content = <CheckSvg />;
         } else {
@@ -24,7 +29,7 @@ export default function Rounds({ currentRound, gameData }) {
         }
 
         return (
-          <li key={gameData[index].quote} className={cn}>
+          <li key={index} className={cn}>
             {Content}
           </li>
         );

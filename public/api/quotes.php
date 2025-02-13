@@ -9,7 +9,6 @@ $q            = "SELECT * FROM quotes WHERE qdate = '2025-02-07' ORDER BY id ASC
 if ($result = $myDbLink->query($q)) {
   while ($row = $result->fetch_assoc()) {
     $resultArray[] = [
-      'qdate'        => $row['qdate'],
       'quote'        => $row['quote'],
       'character'    => $row['character'],
     ];
